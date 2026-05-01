@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayMed — Projet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Familjen+Grotesk:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #FF4502;
+  --mauve: #DCBBFF;
+  --lime: #C2FF01;
+  --blue: #0044FF;
+  --black: #000000;
+  --white: #ffffff;
+  --off: #f5f1e8;
+  --text: #f5f1e8;
+  --muted: rgba(245,241,232,0.55);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Familjen Grotesk', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(220,187,255,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(194,255,1,0.06) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 56px;
+  background: rgba(0,0,0,0.9);
+  border-bottom: 1px solid rgba(194,255,1,0.15);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--lime);
+}
+.nav-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--lime);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.eyebrow::before, .eyebrow::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--lime);
+}
+
+h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+h1 .accent { color: var(--mauve); }
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 0.5rem;
+  line-height: 1.6;
+}
+
+.subtitle strong {
+  color: var(--off);
+  font-weight: 500;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.card {
+  background: #0d0d0d;
+  border: 1px solid rgba(194,255,1,0.18);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--lime);
+  box-shadow: 0 20px 40px rgba(194,255,1,0.08);
+}
+.card:hover::before { transform: scaleX(1); }
+
+.card.mauve::before { background: var(--mauve); }
+.card.mauve:hover { border-color: var(--mauve); box-shadow: 0 20px 40px rgba(220,187,255,0.1); }
+
+.card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+}
+.card-num .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.card.mauve .card-num .dot { background: var(--mauve); }
+
+.card-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.card-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.card-cta {
+  margin-top: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--lime);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.card.mauve .card-cta { color: var(--mauve); }
+.card-cta .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.card:hover .card-cta .arrow { transform: translateX(6px); }
+
+/* FOOTER */
+footer {
+  padding: 2rem;
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-top: 1px solid rgba(194,255,1,0.1);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  nav { padding: 0 1.25rem; }
+  main { padding: 6rem 1.25rem 3rem; }
+  .card { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PlayMed</div>
+  <div class="nav-tag">Master 2 · Marketing Digital</div>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="eyebrow">Projet entreprise · 2026</div>
+    <h1>Play<span class="accent">Med</span></h1>
+    <p class="subtitle">
+      <strong>MedSport Connect</strong> — la plateforme qui connecte les sportifs
+      et les professionnels de santé du sport.
+    </p>
+  </div>
+
+  <div class="cards">
+    <a href="etude-de-marche.html" class="card">
+      <div class="card-num"><span class="dot"></span>01 / Dossier Booster</div>
+      <div class="card-title">Étude de marché</div>
+      <p class="card-desc">
+        Analyse du marché, positionnement, business model, stratégie go-to-market
+        et projections financières du projet PlayMed.
+      </p>
+      <div class="card-cta">
+        Consulter le dossier <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="identite-visuelle.html" class="card mauve">
+      <div class="card-num"><span class="dot"></span>02 / Brand Book</div>
+      <div class="card-title">Identité visuelle</div>
+      <p class="card-desc">
+        Logo, palette de couleurs, typographies, ton de marque et système de
+        design de la marque PlayMed.
+      </p>
+      <div class="card-cta">
+        Découvrir la marque <span class="arrow">→</span>
+      </div>
+    </a>
+  </div>
+</main>
+
+<footer>
+  © 2026 PlayMed · Projet Master 2 Marketing Digital
+</footer>
+
+</body>
+</html>
