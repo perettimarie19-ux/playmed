@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayMed — Brand Book · Spotlight Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Familjen+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red-orange: #FF4502;
+    --mauve: #DCBBFF;
+    --lime: #C2FF01;
+    --blue: #0044FF;
+    --black: #000000;
+    --black-soft: #0a0a0a;
+    --black-card: #141414;
+    --white: #ffffff;
+    --cream: #f5f1e8;
+    --grey: #2a2a2a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    mix-blend-mode: screen;
+  }
+
+  /* ─────── COVER ─────── */
+  .cover {
+    min-height: 100vh;
+    background: var(--black);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+  }
+  .cover::before {
+    content: ''; position: absolute;
+    top: -10%; right: -15%;
+    width: 60vw; height: 60vw;
+    background: var(--lime);
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    animation: float 8s ease-in-out infinite;
+    z-index: 0;
+  }
+  .cover::after {
+    content: ''; position: absolute;
+    bottom: -25%; left: -10%;
+    width: 55vw; height: 55vw;
+    background: var(--red-orange);
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.45;
+    animation: float 10s ease-in-out infinite reverse;
+    z-index: 0;
+  }
+  @keyframes float {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(40px,-40px); }
+  }
+
+  .cover-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    position: relative; z-index: 2;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  .cover-top .accent { color: var(--lime); }
+
+  .cover-center {
+    position: relative; z-index: 2;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 2rem;
+    background: var(--black);
+    padding: 0.5rem 1.2rem;
+    border: 1px solid var(--lime);
+    display: inline-block;
+  }
+  .cover-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(5rem, 18vw, 18rem);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    transform: skewX(-6deg);
+  }
+  .cover-title .ed {
+    color: var(--red-orange);
+    font-style: italic;
+  }
+  .cover-subtitle {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    font-weight: 400;
+    color: rgba(245,241,232,0.65);
+    max-width: 580px;
+    line-height: 1.5;
+  }
+  .cover-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    position: relative; z-index: 2;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  .cover-bottom .num {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--red-orange);
+    letter-spacing: -0.02em;
+    transform: skewX(-6deg);
+    display: inline-block;
+  }
+  .scroll-mark {
+    display: flex; align-items: center; gap: 0.5rem;
+    color: var(--lime);
+  }
+  .scroll-mark::after {
+    content: '↓';
+    font-size: 1.2rem;
+    animation: bounce 1.5s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  .toc {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .toc a {
+    color: var(--cream);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(245,241,232,0.3);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s;
+  }
+  .toc a:hover { background: var(--lime); color: var(--black); border-color: var(--lime); }
+
+  /* ─────── SECTION ─────── */
+  .section {
+    padding: 7rem 3rem;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(245,241,232,0.1);
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-num::before {
+    content: '';
+    width: 24px; height: 1px; background: var(--lime);
+  }
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    transform: skewX(-4deg);
+    display: inline-block;
+  }
+  .section-title .accent { color: var(--red-orange); font-style: italic; }
+  .section-title .lime-accent { color: var(--lime); }
+  .section-title-wrap { display: block; margin-bottom: 1rem; }
+  .section-lead {
+    font-size: 1.05rem;
+    color: rgba(245,241,232,0.7);
+    max-width: 640px;
+    margin-top: 1.5rem;
+    line-height: 1.7;
+  }
+
+  /* ─────── COULEURS ─────── */
+  .colors-section { background: var(--black); }
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    border: 1px solid rgba(245,241,232,0.2);
+  }
+  .swatch {
+    aspect-ratio: 3/4;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid rgba(245,241,232,0.2);
+    transition: transform 0.4s cubic-bezier(.2,.7,.3,1);
+  }
+  .swatch:last-child { border-right: none; }
+  .swatch:hover { transform: scale(1.03); z-index: 5; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+  .swatch-name {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    transform: skewX(-4deg);
+  }
+  .swatch-hex {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .swatch-rgb {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+  }
+  .swatch-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .sw-red { background: var(--red-orange); color: var(--cream); }
+  .sw-mauve { background: var(--mauve); color: var(--black); }
+  .sw-lime { background: var(--lime); color: var(--black); }
+  .sw-blue { background: var(--blue); color: var(--cream); }
+  .sw-black { background: var(--black-card); color: var(--cream); border: 1px solid rgba(245,241,232,0.3); }
+
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .usage-card {
+    border: 1px solid rgba(245,241,232,0.2);
+    padding: 1.8rem;
+    background: var(--black-card);
+  }
+  .usage-card h4 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    transform: skewX(-4deg);
+    display: inline-block;
+    color: var(--lime);
+  }
+  .usage-bar {
+    display: flex;
+    height: 50px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(245,241,232,0.2);
+  }
+  .usage-bar div { height: 100%; }
+  .usage-card p {
+    font-size: 0.85rem;
+    color: rgba(245,241,232,0.7);
+    line-height: 1.6;
+  }
+
+  /* ─────── TYPO ─────── */
+  .typo-section { background: var(--black-soft); }
+  .typo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .typo-card {
+    background: var(--black-card);
+    border: 1px solid rgba(245,241,232,0.2);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .typo-card.hero { background: var(--lime); color: var(--black); }
+  .typo-card.hero .typo-card-info { color: rgba(0,0,0,0.7); border-color: rgba(0,0,0,0.2); }
+  .typo-card.hero .typo-card-label { color: var(--red-orange); }
+  .typo-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red-orange);
+  }
+  .typo-card-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    line-height: 0.95;
+    transform: skewX(-4deg);
+    display: inline-block;
+    color: inherit;
+  }
+  .typo-sample {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: inherit;
+    transform: skewX(-6deg);
+    margin: 1rem 0;
+  }
+  .typo-sample.body {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-size: 1rem;
+    text-transform: none;
+    transform: none;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .typo-sample.mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transform: none;
+    line-height: 1.6;
+  }
+  .typo-card-info {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(245,241,232,0.55);
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245,241,232,0.15);
+  }
+
+  .alphabet {
+    margin-top: 4rem;
+    background: var(--black-card);
+    border: 1px solid rgba(245,241,232,0.2);
+    padding: 2.5rem;
+  }
+  .alphabet-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 1.5rem;
+  }
+  .alphabet-display {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--cream);
+    transform: skewX(-4deg);
+    word-break: break-all;
+  }
+  .alphabet-display .red { color: var(--red-orange); }
+
+  .hierarchy {
+    background: var(--black-card);
+    border: 1px solid rgba(245,241,232,0.2);
+    padding: 2.5rem;
+    margin-top: 2rem;
+  }
+  .hier-h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--cream);
+    transform: skewX(-6deg);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+  .hier-h1 .red { color: var(--red-orange); }
+  .hier-h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--cream);
+    transform: skewX(-4deg);
+    margin: 1.5rem 0 0.5rem;
+    display: inline-block;
+  }
+  .hier-h3 {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--lime);
+    letter-spacing: 0.05em;
+    margin: 1.2rem 0 0.4rem;
+  }
+  .hier-body {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(245,241,232,0.75);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+  .hier-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: rgba(245,241,232,0.4);
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
+  }
+
+  /* ─────── LOGOS ─────── */
+  .lockups-section { background: var(--black); }
+  .lockups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .lockup {
+    aspect-ratio: 4/3;
+    border: 1px solid rgba(245,241,232,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .lockup-tag {
+    position: absolute;
+    top: 1rem; left: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(245,241,232,0.3);
+    color: var(--cream);
+    z-index: 5;
+  }
+  .lockup-1 { background: var(--black-card); }
+  .lockup-2 { background: var(--lime); }
+  .lockup-3 { background: var(--red-orange); }
+  .lockup-4 { background: var(--mauve); }
+  .l-text {
+    font-family: 'Anton', sans-serif;
+    font-size: 5.5rem;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: center;
+    transform: skewX(-6deg);
+  }
+  .lockup-1 .l-text { color: var(--cream); }
+  .lockup-1 .l-text .ed { color: var(--red-orange); font-style: italic; }
+  .lockup-2 .l-text { color: var(--black); }
+  .lockup-2 .l-text .ed { color: var(--red-orange); font-style: italic; }
+  .lockup-3 .l-text { color: var(--cream); }
+  .lockup-3 .l-text .ed { color: var(--lime); font-style: italic; }
+  .lockup-4 .l-text { color: var(--blue); }
+  .lockup-4 .l-text .ed { color: var(--black); font-style: italic; }
+  .l-text small {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    transform: skewX(6deg);
+    margin-top: 0.5rem;
+    font-style: normal;
+  }
+  .lockup-1 .l-text small { color: var(--lime); }
+  .lockup-2 .l-text small { color: var(--red-orange); }
+  .lockup-3 .l-text small { color: var(--lime); }
+  .lockup-4 .l-text small { color: var(--black); }
+
+  .symbol-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .symbol-card {
+    aspect-ratio: 1;
+    border: 1px solid rgba(245,241,232,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .symbol-tag {
+    position: absolute;
+    bottom: 0.7rem; left: 0.7rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ─────── ICÔNES ─────── */
+  .icons-section { background: var(--black-soft); }
+  .icons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    border: 1px solid rgba(245,241,232,0.2);
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    background: var(--black-card);
+    border-right: 1px solid rgba(245,241,232,0.15);
+    border-bottom: 1px solid rgba(245,241,232,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .icon-cell:hover { background: var(--black); }
+  .icon-cell:hover svg .stroke { stroke: var(--lime); }
+  .icon-cell:nth-child(4n) { border-right: none; }
+  .icon-cell:nth-last-child(-n+4) { border-bottom: none; }
+  .icon-cell svg {
+    width: 48%;
+    height: auto;
+    max-width: 80px;
+    transition: all 0.3s;
+  }
+  .icon-cell svg .stroke { stroke: var(--cream); stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s; }
+  .icon-cell svg .fill-red { fill: var(--red-orange); }
+  .icon-cell svg .fill-lime { fill: var(--lime); }
+  .icon-cell svg .fill-cream { fill: var(--cream); }
+  .icon-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-align: center;
+  }
+
+  .icon-style-info {
+    margin-top: 3rem;
+    background: var(--lime);
+    border: 1px solid rgba(245,241,232,0.2);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    color: var(--black);
+  }
+  .icon-style-info > div h4 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    transform: skewX(-4deg);
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    color: var(--black);
+  }
+  .icon-style-info > div p {
+    font-size: 0.9rem;
+    color: rgba(0,0,0,0.75);
+    line-height: 1.6;
+  }
+  .icon-style-info .icon-spec {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--lime);
+    background: var(--black);
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--black);
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+
+  /* ─────── APP MOCKUPS ─────── */
+  .app-section { background: var(--black); }
+  .phones-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .phone {
+    aspect-ratio: 9/19;
+    border-radius: 36px;
+    border: 8px solid var(--black);
+    overflow: hidden;
+    position: relative;
+    background: var(--black);
+    box-shadow: 0 30px 80px rgba(194,255,1,0.08), 0 0 0 1px rgba(245,241,232,0.15);
+  }
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 22px;
+    background: var(--black);
+    border-radius: 0 0 14px 14px;
+    z-index: 50;
+  }
+  .phone-status {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    z-index: 10;
+  }
+  .phone-tag {
+    position: absolute;
+    bottom: -1.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,241,232,0.5);
+    white-space: nowrap;
+  }
+
+  /* PHONE 1 — Splash */
+  .phone-1 { background: var(--lime); }
+  .phone-1 .phone-status { color: var(--black); }
+  .phone-1-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3.5rem 1.2rem 1.5rem;
+    position: relative;
+  }
+  .phone-1-content::before {
+    content: '';
+    position: absolute;
+    bottom: 30%;
+    right: -20%;
+    width: 80%;
+    height: 60%;
+    background: var(--red-orange);
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.5;
+  }
+  .phone-1-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    line-height: 0.85;
+    text-transform: uppercase;
+    color: var(--black);
+    transform: skewX(-6deg);
+    text-align: center;
+    position: relative;
+  }
+  .phone-1-logo .ed { color: var(--red-orange); font-style: italic; }
+  .phone-1-hero {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--black);
+    transform: skewX(-6deg);
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .phone-1-hero .red { color: var(--red-orange); }
+  .phone-1-sub {
+    font-size: 0.65rem;
+    color: rgba(0,0,0,0.7);
+    text-align: center;
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+  .phone-1-cta {
+    background: var(--black);
+    color: var(--lime);
+    padding: 0.7rem;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transform: skewX(-4deg);
+    position: relative;
+  }
+  .phone-1-cta-2 {
+    text-align: center;
+    margin-top: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--black);
+    position: relative;
+  }
+
+  /* PHONE 2 — Dashboard DARK */
+  .phone-2 { background: var(--black); color: var(--cream); }
+  .phone-2 .phone-status { color: var(--cream); }
+  .phone-2-content {
+    height: 100%;
+    padding: 3rem 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow: hidden;
+  }
+  .ph2-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 0.4rem;
+  }
+  .ph2-greeting {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(245,241,232,0.5);
+  }
+  .ph2-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--cream);
+    transform: skewX(-4deg);
+  }
+  .ph2-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--red-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cream);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.75rem;
+  }
+  .ph2-stat {
+    background: var(--lime);
+    color: var(--black);
+    padding: 0.8rem;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ph2-stat::before {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    right: -20%;
+    width: 80%;
+    height: 150%;
+    background: var(--red-orange);
+    border-radius: 50%;
+    opacity: 0.4;
+    filter: blur(20px);
+  }
+  .ph2-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--black);
+    position: relative;
+  }
+  .ph2-stat-value {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    transform: skewX(-6deg);
+    line-height: 1;
+    color: var(--black);
+    position: relative;
+    margin-top: 0.2rem;
+  }
+  .ph2-stat-sub {
+    font-size: 0.55rem;
+    color: rgba(0,0,0,0.7);
+    margin-top: 0.3rem;
+    position: relative;
+  }
+  .ph2-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .ph2-mini {
+    background: var(--black-card);
+    border: 1px solid rgba(245,241,232,0.2);
+    border-radius: 10px;
+    padding: 0.6rem;
+  }
+  .ph2-mini.accent { background: var(--red-orange); border-color: var(--red-orange); }
+  .ph2-mini-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(245,241,232,0.6);
+  }
+  .ph2-mini.accent .ph2-mini-label { color: rgba(0,0,0,0.7); }
+  .ph2-mini-val {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: var(--cream);
+    transform: skewX(-4deg);
+    line-height: 1;
+    margin-top: 0.2rem;
+  }
+  .ph2-mini.accent .ph2-mini-val { color: var(--cream); }
+  .ph2-mini-val .lime { color: var(--lime); }
+  .ph2-list-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--lime);
+    transform: skewX(-4deg);
+    margin: 0.3rem 0.4rem 0;
+  }
+  .ph2-list-item {
+    background: var(--black-card);
+    border: 1px solid rgba(245,241,232,0.15);
+    border-radius: 10px;
+    padding: 0.5rem 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ph2-dot {
+    width: 8px; height: 8px;
+    background: var(--red-orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .ph2-dot.lime { background: var(--lime); }
+  .ph2-item-info { flex: 1; }
+  .ph2-item-name {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.6rem;
+    color: var(--cream);
+  }
+  .ph2-item-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    color: rgba(245,241,232,0.5);
+    text-transform: uppercase;
+  }
+  .ph2-tab-bar {
+    margin-top: auto;
+    background: var(--lime);
+    border-radius: 16px;
+    padding: 0.5rem 0.4rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  .ph2-tab {
+    width: 22px; height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ph2-tab svg { width: 100%; height: 100%; }
+  .ph2-tab.active svg path { stroke: var(--red-orange); stroke-width: 3; }
+  .ph2-tab svg path { stroke: rgba(0,0,0,0.5); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* PHONE 3 — Profile */
+  .phone-3 { background: var(--mauve); }
+  .phone-3 .phone-status { color: var(--black); }
+  .phone-3-content {
+    height: 100%;
+    padding: 3rem 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .ph3-back {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--black);
+  }
+  .ph3-hero {
+    background: var(--black);
+    border-radius: 14px;
+    padding: 1rem;
+    text-align: center;
+    color: var(--cream);
+  }
+  .ph3-pic {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: var(--lime);
+    margin: 0 auto 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    color: var(--black);
+    transform: skewX(-6deg);
+    border: 2px solid var(--cream);
+  }
+  .ph3-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--lime);
+    margin-bottom: 0.2rem;
+  }
+  .ph3-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transform: skewX(-6deg);
+    color: var(--cream);
+    line-height: 1;
+  }
+  .ph3-spec {
+    font-size: 0.6rem;
+    color: rgba(245,241,232,0.85);
+    margin-top: 0.3rem;
+  }
+  .ph3-badges {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .ph3-badge {
+    background: var(--lime);
+    color: var(--black);
+    padding: 0.15rem 0.4rem;
+    border-radius: 999px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .ph3-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.4rem;
+  }
+  .ph3-stat-mini {
+    background: var(--black);
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    padding: 0.5rem;
+    text-align: center;
+    color: var(--cream);
+  }
+  .ph3-stat-mini .v {
+    font-family: 'Anton', sans-serif;
+    font-size: 1rem;
+    color: var(--cream);
+    transform: skewX(-4deg);
+    line-height: 1;
+    display: inline-block;
+  }
+  .ph3-stat-mini .v .red { color: var(--red-orange); }
+  .ph3-stat-mini .v .lime { color: var(--lime); }
+  .ph3-stat-mini .l {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.45rem;
+    text-transform: uppercase;
+    color: rgba(245,241,232,0.6);
+    margin-top: 0.15rem;
+  }
+  .ph3-availability {
+    background: var(--black);
+    border-radius: 10px;
+    padding: 0.6rem;
+    color: var(--cream);
+  }
+  .ph3-avail-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--lime);
+    transform: skewX(-4deg);
+    margin-bottom: 0.4rem;
+  }
+  .ph3-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.2rem;
+  }
+  .ph3-day {
+    aspect-ratio: 1;
+    background: var(--grey);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    color: var(--cream);
+  }
+  .ph3-day.on { background: var(--lime); color: var(--black); }
+  .ph3-day.off { background: var(--red-orange); color: var(--cream); }
+  .ph3-cta {
+    background: var(--black);
+    color: var(--lime);
+    border-radius: 10px;
+    padding: 0.7rem;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transform: skewX(-4deg);
+    margin-top: auto;
+  }
+
+  /* PHONE 4 — Match */
+  .phone-4 { background: var(--red-orange); }
+  .phone-4 .phone-status { color: var(--cream); }
+  .phone-4-content {
+    height: 100%;
+    padding: 3rem 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: var(--cream);
+  }
+  .ph4-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--lime);
+  }
+  .ph4-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--cream);
+    transform: skewX(-6deg);
+    line-height: 0.95;
+  }
+  .ph4-title .lime { color: var(--lime); font-style: italic; }
+  .ph4-card {
+    background: var(--black);
+    color: var(--cream);
+    border-radius: 14px;
+    padding: 0.8rem;
+    margin-top: 0.4rem;
+    position: relative;
+  }
+  .ph4-card-tag {
+    position: absolute;
+    top: -7px; right: 10px;
+    background: var(--lime);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .ph4-card-head {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .ph4-card-pic {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--lime);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    transform: skewX(-6deg);
+  }
+  .ph4-card-name {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+  }
+  .ph4-card-spec {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    color: rgba(245,241,232,0.6);
+    margin-top: 0.15rem;
+  }
+  .ph4-card-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    margin-top: 0.4rem;
+  }
+  .ph4-meta-item {
+    background: var(--grey);
+    padding: 0.3rem;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-align: center;
+  }
+  .ph4-meta-item.match {
+    background: var(--lime);
+    color: var(--black);
+  }
+  .ph4-meta-item.match strong {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    transform: skewX(-4deg);
+    display: inline-block;
+  }
+
+  /* ─────── APPLICATIONS ─────── */
+  .apps-section { background: var(--black-soft); }
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .app-large {
+    background: var(--lime);
+    aspect-ratio: 16/10;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(245,241,232,0.2);
+  }
+  .app-large::before {
+    content: '';
+    position: absolute;
+    bottom: -30%; right: -10%;
+    width: 60%; height: 100%;
+    background: var(--red-orange);
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+  }
+  .app-large-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--black);
+    position: relative;
+  }
+  .app-large-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--black);
+    transform: skewX(-6deg);
+    position: relative;
+    margin: 1rem 0;
+  }
+  .app-large-title .red { color: var(--red-orange); }
+  .app-large-foot {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-size: 0.95rem;
+    color: var(--black);
+    position: relative;
+    max-width: 360px;
+  }
+  .app-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .app-card {
+    padding: 2rem;
+    border: 1px solid rgba(245,241,232,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+  }
+  .app-card-1 { background: var(--mauve); color: var(--black); }
+  .app-card-2 { background: var(--black-card); color: var(--cream); }
+  .app-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .app-card-2 .app-eyebrow { color: var(--lime); opacity: 1; }
+  .app-card h4 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    transform: skewX(-6deg);
+    display: inline-block;
+  }
+  .app-card-1 h4 { color: var(--blue); }
+  .app-card-2 h4 { color: var(--lime); }
+  .app-card-2 h4 .red { color: var(--red-orange); }
+  .app-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+    opacity: 0.85;
+  }
+
+  .cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .biz-card {
+    aspect-ratio: 1.7/1;
+    padding: 1.5rem;
+    border: 1px solid rgba(245,241,232,0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .biz-front { background: var(--black); color: var(--cream); }
+  .biz-back { background: var(--lime); color: var(--black); }
+  .biz-front::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -30%;
+    width: 80%; height: 200%;
+    background: var(--red-orange);
+    transform: rotate(20deg);
+    opacity: 0.85;
+  }
+  .biz-front-content { position: relative; z-index: 2; }
+  .biz-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    line-height: 1;
+    text-transform: uppercase;
+    transform: skewX(-6deg);
+    color: var(--lime);
+    display: inline-block;
+  }
+  .biz-logo .ed { color: var(--cream); font-style: italic; }
+  .biz-info {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+    color: var(--cream);
+  }
+  .biz-name {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+  .biz-back-content {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.8rem;
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--black);
+    transform: skewX(-4deg);
+  }
+  .biz-back-content .red { color: var(--red-orange); font-style: italic; }
+  .biz-back-content small {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--red-orange);
+    margin-top: 0.5rem;
+    letter-spacing: 0.4em;
+    transform: skewX(4deg);
+    font-style: normal;
+  }
+
+  /* ─────── DO / DON'T ─────── */
+  .rules-section { background: var(--black); }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .rule-col {
+    border: 1px solid rgba(245,241,232,0.2);
+    padding: 2rem;
+  }
+  .rule-col.do { background: var(--lime); color: var(--black); }
+  .rule-col.dont { background: var(--black-card); color: var(--cream); }
+  .rule-header {
+    display: flex; align-items: center; gap: 0.7rem;
+    margin-bottom: 2rem;
+  }
+  .rule-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    background: var(--black);
+    color: var(--lime);
+    border: 2px solid var(--black);
+  }
+  .rule-col.dont .rule-icon { background: var(--red-orange); color: var(--cream); border-color: var(--red-orange); }
+  .rule-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    transform: skewX(-4deg);
+    display: inline-block;
+  }
+  .rule-list { list-style: none; }
+  .rule-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+  }
+  .rule-col.dont .rule-list li { border-bottom-color: rgba(245,241,232,0.15); }
+  .rule-list li:last-child { border-bottom: none; }
+  .rule-list li::before {
+    content: '→';
+    flex-shrink: 0;
+    font-weight: bold;
+  }
+  .rule-col.dont .rule-list li::before { content: '×'; color: var(--red-orange); font-size: 1.3rem; line-height: 1; }
+
+  /* ─────── END ─────── */
+  .end {
+    background: var(--lime);
+    color: var(--black);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(245,241,232,0.2);
+  }
+  .end::before {
+    content: 'PLAYMED PLAYMED PLAYMED';
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%) skewX(-6deg);
+    font-family: 'Anton', sans-serif;
+    font-size: 12rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--red-orange);
+    opacity: 0.18;
+    white-space: nowrap;
+  }
+  .end-content { position: relative; z-index: 2; }
+  .end-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red-orange);
+    margin-bottom: 1rem;
+  }
+  .end-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    transform: skewX(-6deg);
+    display: inline-block;
+  }
+  .end-title .red { color: var(--red-orange); font-style: italic; }
+  .end-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(0,0,0,0.6);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 1100px) {
+    .phones-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .palette { grid-template-columns: repeat(2, 1fr); }
+    .swatch { aspect-ratio: 1; }
+    .swatch:nth-child(2n) { border-right: none; }
+    .swatch:not(:nth-last-child(-n+2)) { border-bottom: 1px solid rgba(245,241,232,0.2); }
+    .usage-grid, .lockups, .typo-grid, .rules-grid, .cards-row, .symbol-row { grid-template-columns: 1fr; }
+    .apps-grid { grid-template-columns: 1fr; }
+    .icons-grid { grid-template-columns: repeat(2, 1fr); }
+    .icons-grid .icon-cell:nth-child(2n) { border-right: none; }
+    .icons-grid .icon-cell:nth-child(4n) { border-right: 1px solid rgba(245,241,232,0.15); }
+    .icon-style-info { grid-template-columns: 1fr; }
+    .phones-row { grid-template-columns: 1fr; }
+    .section { padding: 5rem 1.5rem; }
+    .cover { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<section class="cover">
+  <div class="cover-top">
+    <div>
+      Brand Identity System<br>
+      <span class="accent">v.04 / Spotlight Dark</span>
+    </div>
+    <div style="text-align:right;">
+      Master 2 Marketing Digital<br>
+      <span class="accent">PlayMed Project</span>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-eyebrow">Charte Graphique · Brand Book Complet</div>
+    <h1 class="cover-title">Play<span class="ed">Med</span></h1>
+    <p class="cover-subtitle">Le système de marque qui connecte le sport semi-professionnel et la santé. Bold. Athletic. Nocturne.</p>
+    <div class="toc">
+      <a href="#colors">01 / Couleurs</a>
+      <a href="#typo">02 / Typo</a>
+      <a href="#logos">03 / Logos</a>
+      <a href="#icons">04 / Icônes</a>
+      <a href="#app">05 / App</a>
+      <a href="#apps">06 / Supports</a>
+      <a href="#rules">07 / Règles</a>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div>
+      <div style="opacity:0.5;margin-bottom:0.4rem;">Édition</div>
+      <div class="num">04</div>
+    </div>
+    <div class="scroll-mark">Découvrir</div>
+    <div style="text-align:right;">
+      <div style="opacity:0.5;margin-bottom:0.4rem;">Confidentiel</div>
+      <div>© 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COULEURS ═══════════ -->
+<section class="section colors-section" id="colors">
+  <div class="section-num">01 / Système chromatique</div>
+  <div class="section-title-wrap">
+    <h2 class="section-title">Cinq couleurs.</h2><br>
+    <h2 class="section-title">Une <span class="accent">énergie</span>.</h2>
+  </div>
+  <p class="section-lead">Sur fond noir, les couleurs vibrent à pleine puissance : le lime devient électrique, le red orange brûle, le mauve et le bleu structurent. Le noir n'est pas absence — c'est la scène où tout le reste prend vie.</p>
+
+  <div class="palette">
+    <div class="swatch sw-red">
+      <div>
+        <div class="swatch-role">— 01 / Signature</div>
+        <div class="swatch-name">Red<br>Orange</div>
+      </div>
+      <div>
+        <div class="swatch-hex">#FF4502</div>
+        <div class="swatch-rgb">RGB · 255, 69, 2</div>
+      </div>
+    </div>
+    <div class="swatch sw-lime">
+      <div>
+        <div class="swatch-role">— 02 / Hero</div>
+        <div class="swatch-name">Bitter<br>Lime</div>
+      </div>
+      <div>
+        <div class="swatch-hex">#C2FF01</div>
+        <div class="swatch-rgb">RGB · 194, 255, 1</div>
+      </div>
+    </div>
+    <div class="swatch sw-mauve">
+      <div>
+        <div class="swatch-role">— 03 / Care</div>
+        <div class="swatch-name">Mauve</div>
+      </div>
+      <div>
+        <div class="swatch-hex">#DCBBFF</div>
+        <div class="swatch-rgb">RGB · 220, 187, 255</div>
+      </div>
+    </div>
+    <div class="swatch sw-blue">
+      <div>
+        <div class="swatch-role">— 04 / Deep</div>
+        <div class="swatch-name">Electric<br>Blue</div>
+      </div>
+      <div>
+        <div class="swatch-hex">#0044FF</div>
+        <div class="swatch-rgb">RGB · 0, 68, 255</div>
+      </div>
+    </div>
+    <div class="swatch sw-black">
+      <div>
+        <div class="swatch-role">— 05 / Stage</div>
+        <div class="swatch-name">Pitch<br>Black</div>
+      </div>
+      <div>
+        <div class="swatch-hex">#000000</div>
+        <div class="swatch-rgb">RGB · 0, 0, 0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-grid">
+    <div class="usage-card">
+      <h4>→ Hiérarchie 60-30-10</h4>
+      <div class="usage-bar">
+        <div style="background:#000;width:60%;border-right:1px solid rgba(245,241,232,0.2);"></div>
+        <div style="background:#C2FF01;width:30%;"></div>
+        <div style="background:#FF4502;width:10%;"></div>
+      </div>
+      <p>Noir comme scène dominante (60%), lime comme couleur héroïque qui vient illuminer les moments clés (30%), red orange pour l'urgence et le call-to-action (10%).</p>
+    </div>
+    <div class="usage-card">
+      <h4>→ Combo signature</h4>
+      <div class="usage-bar">
+        <div style="background:#000;width:33%;border-right:1px solid rgba(245,241,232,0.2);"></div>
+        <div style="background:#C2FF01;width:33%;"></div>
+        <div style="background:#FF4502;width:34%;"></div>
+      </div>
+      <p>Noir + Lime + Red orange = la trinité PlayMed. La combinaison la plus forte, la plus athlétique, la plus reconnaissable. Hero visuels, posters, campagnes.</p>
+    </div>
+    <div class="usage-card">
+      <h4>→ Combo soft / care</h4>
+      <div class="usage-bar">
+        <div style="background:#DCBBFF;width:50%;"></div>
+        <div style="background:#0044FF;width:50%;"></div>
+      </div>
+      <p>Mauve + Bleu = sphère médicale, soin, accompagnement humain. Idéal pour les contenus liés à la santé mentale et au profil praticien.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TYPOGRAPHIE ═══════════ -->
+<section class="section typo-section" id="typo">
+  <div class="section-num">02 / Système typographique</div>
+  <div class="section-title-wrap">
+    <h2 class="section-title">Une voix.</h2><br>
+    <h2 class="section-title"><span class="accent">Trois</span> usages.</h2>
+  </div>
+  <p class="section-lead">Anton pour l'attaque, Familjen Grotesk pour le quotidien, DM Mono pour la donnée. Chaque police a un rôle. Pas d'hésitation, pas de mélange aléatoire.</p>
+
+  <div class="typo-grid">
+    <div class="typo-card hero">
+      <div class="typo-card-label">— 01 / Display & Titres</div>
+      <div class="typo-card-name">Anton</div>
+      <div class="typo-sample">PERFORM<br>NEVER<br>STOP</div>
+      <div class="typo-card-info">Sans-serif condensée · Capitales toujours · Skew −6° · Posters, hero, headlines</div>
+    </div>
+    <div class="typo-card">
+      <div class="typo-card-label">— 02 / Body & Lecture</div>
+      <div class="typo-card-name" style="color:var(--cream);">Familjen Grotesk</div>
+      <div class="typo-sample body" style="color:var(--cream);">PlayMed connecte les clubs sportifs aux professionnels de santé. Une seule plateforme. Toute la donnée. Tous les praticiens. Pensée pour le terrain et pour les vestiaires.</div>
+      <div class="typo-card-info">Grotesque humaniste · 14–18px en interface · Très lisible écran et print</div>
+    </div>
+    <div class="typo-card">
+      <div class="typo-card-label">— 03 / Mono & Data</div>
+      <div class="typo-card-name" style="color:var(--lime);">DM Mono</div>
+      <div class="typo-sample mono" style="color:var(--lime);">→ STATS<br>84% disponibilité<br>16% blessures<br>10–30% coût caché</div>
+      <div class="typo-card-info">Caractères techniques · KPIs, légendes, codes, étiquettes data · Apporte la rigueur</div>
+    </div>
+  </div>
+
+  <div class="alphabet">
+    <div class="alphabet-label">→ Anton — Alphabet complet skewé</div>
+    <div class="alphabet-display">
+      ABCDEFGHIJKLM<br>
+      <span class="red">NOPQRSTUVWXYZ</span><br>
+      0123456789 — &amp; ! ? . ,
+    </div>
+  </div>
+
+  <div class="hierarchy">
+    <div class="alphabet-label" style="margin-bottom:1.5rem;">→ Hiérarchie typographique</div>
+    <h1 class="hier-h1">DÉMO <span class="red">TITRE</span> H1</h1>
+    <div class="hier-meta">Anton · 64px · skew −6° · uppercase · #f5f1e8</div>
+    <h2 class="hier-h2">Sous-titre H2</h2>
+    <div class="hier-meta">Anton · 32px · skew −4° · uppercase</div>
+    <h3 class="hier-h3">→ Catégorie / Section H3</h3>
+    <div class="hier-meta">Familjen Grotesk Bold · 18px · uppercase · letter-spacing 0.05em · #C2FF01</div>
+    <p class="hier-body">Voici un paragraphe de corps de texte. La lisibilité est primordiale dans une plateforme qui mêle données médicales sensibles et contenu marketing. Familjen Grotesk a été choisie pour son humanité et sa neutralité technique.</p>
+    <div class="hier-meta">Familjen Grotesk Regular · 15–16px · line-height 1.7 · #f5f1e8 75%</div>
+  </div>
+</section>
+
+<!-- ═══════════ LOGOS ═══════════ -->
+<section class="section lockups-section" id="logos">
+  <div class="section-num">03 / Logos & déclinaisons</div>
+  <div class="section-title-wrap">
+    <h2 class="section-title">Quatre <span class="accent">déclinaisons</span>.</h2><br>
+    <h2 class="section-title">Un seul ADN.</h2>
+  </div>
+  <p class="section-lead">Le logo PlayMed se décline sur tous les fonds de la palette. La typo penchée et le décrochage de couleur sur "Med" sont les deux signatures à conserver impérativement.</p>
+
+  <div class="lockups">
+    <div class="lockup lockup-1">
+      <div class="lockup-tag">Primary · sur black</div>
+      <div class="l-text">
+        Play<span class="ed">Med</span>
+        <small>HEALTH × SPORT</small>
+      </div>
+    </div>
+    <div class="lockup lockup-2">
+      <div class="lockup-tag">Hero · sur lime</div>
+      <div class="l-text">
+        Play<span class="ed">Med</span>
+        <small>BUILT BY ATHLETES</small>
+      </div>
+    </div>
+    <div class="lockup lockup-3">
+      <div class="lockup-tag">Punch · sur red orange</div>
+      <div class="l-text">
+        Play<span class="ed">Med</span>
+        <small>EST. 2026 · PARIS</small>
+      </div>
+    </div>
+    <div class="lockup lockup-4">
+      <div class="lockup-tag">Care · sur mauve</div>
+      <div class="l-text">
+        Play<span class="ed">Med</span>
+        <small>PERFORM &amp; CARE</small>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:4rem;">
+    <div class="alphabet-label">→ Pictogramme · pour favicon, app icon, watermark</div>
+    <div class="symbol-row">
+      <div class="symbol-card" style="background:var(--black-card);">
+        <svg viewBox="0 0 100 100" width="55%" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="80" height="80" rx="18" fill="#C2FF01"/>
+          <text x="50" y="68" font-family="Anton, sans-serif" font-size="60" fill="#000" text-anchor="middle" transform="skewX(-8 50 50)">P</text>
+          <circle cx="78" cy="22" r="8" fill="#FF4502"/>
+        </svg>
+        <div class="symbol-tag" style="color:var(--lime);">App icon</div>
+      </div>
+      <div class="symbol-card" style="background:var(--lime);">
+        <svg viewBox="0 0 100 100" width="55%" xmlns="http://www.w3.org/2000/svg">
+          <text x="50" y="68" font-family="Anton, sans-serif" font-size="60" fill="#000" text-anchor="middle" transform="skewX(-8 50 50)">P</text>
+          <circle cx="78" cy="22" r="8" fill="#FF4502"/>
+        </svg>
+        <div class="symbol-tag" style="color:var(--black);">Mono fond clair</div>
+      </div>
+      <div class="symbol-card" style="background:var(--red-orange);">
+        <svg viewBox="0 0 100 100" width="55%" xmlns="http://www.w3.org/2000/svg">
+          <text x="50" y="68" font-family="Anton, sans-serif" font-size="60" fill="#C2FF01" text-anchor="middle" transform="skewX(-8 50 50)">P</text>
+          <circle cx="78" cy="22" r="8" fill="#000"/>
+        </svg>
+        <div class="symbol-tag" style="color:var(--cream);">Sur red orange</div>
+      </div>
+      <div class="symbol-card" style="background:var(--black);">
+        <svg viewBox="0 0 100 100" width="55%" xmlns="http://www.w3.org/2000/svg">
+          <text x="50" y="68" font-family="Anton, sans-serif" font-size="60" fill="#C2FF01" text-anchor="middle" transform="skewX(-8 50 50)">P</text>
+          <circle cx="78" cy="22" r="8" fill="#FF4502"/>
+        </svg>
+        <div class="symbol-tag" style="color:var(--lime);">Sur black</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ICÔNES ═══════════ -->
+<section class="section icons-section" id="icons">
+  <div class="section-num">04 / Système d'icônes</div>
+  <div class="section-title-wrap">
+    <h2 class="section-title">Icônes</h2><br>
+    <h2 class="section-title">à <span class="accent">l'attaque</span>.</h2>
+  </div>
+  <p class="section-lead">Pictogrammes custom : trait crème épais sur fond noir, terminaisons rondes, jamais d'angle pointu, accent red orange ou lime pour signaler l'action. Le style suit la même logique que la typo : franc, sportif, sans détour.</p>
+
+  <div class="icons-grid">
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 50 85 C 30 70, 10 55, 10 35 A 18 18 0 0 1 50 25 A 18 18 0 0 1 90 35 C 90 55, 70 70, 50 85 Z"/>
+        <path class="stroke" stroke="#FF4502" d="M 18 50 L 32 50 L 38 38 L 48 60 L 56 45 L 64 50 L 82 50" fill="none"/>
+      </svg>
+      <div class="icon-label">Suivi médical</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 25 15 L 25 45 A 15 15 0 0 0 55 45 L 55 15"/>
+        <path class="stroke" d="M 40 60 L 40 75 A 12 12 0 0 0 64 75 L 64 65"/>
+        <circle cx="64" cy="55" r="10" class="stroke"/>
+        <circle cx="64" cy="55" r="4" class="fill-red"/>
+      </svg>
+      <div class="icon-label">Praticiens</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 50 12 L 18 24 L 18 52 C 18 70, 32 84, 50 90 C 68 84, 82 70, 82 52 L 82 24 Z"/>
+        <path class="stroke" stroke="#FF4502" d="M 32 50 L 45 62 L 68 38" fill="none"/>
+      </svg>
+      <div class="icon-label">RGPD / HDS</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 28 18 L 72 18 L 72 42 A 22 22 0 0 1 28 42 Z"/>
+        <path class="stroke" d="M 28 22 L 14 22 L 14 32 A 14 14 0 0 0 28 38"/>
+        <path class="stroke" d="M 72 22 L 86 22 L 86 32 A 14 14 0 0 1 72 38"/>
+        <path class="stroke" d="M 50 64 L 50 76 M 36 84 L 64 84"/>
+        <circle cx="50" cy="32" r="5" class="fill-red"/>
+      </svg>
+      <div class="icon-label">Performance</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="22" width="72" height="64" rx="6" class="stroke"/>
+        <path class="stroke" d="M 14 38 L 86 38 M 32 14 L 32 30 M 68 14 L 68 30"/>
+        <rect x="56" y="48" width="14" height="14" rx="2" class="fill-red"/>
+      </svg>
+      <div class="icon-label">Planning</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="38" cy="34" r="13" class="stroke"/>
+        <circle cx="68" cy="40" r="10" class="stroke" stroke="#FF4502"/>
+        <path class="stroke" d="M 14 78 C 14 64, 24 56, 38 56 C 52 56, 62 64, 62 78"/>
+        <path class="stroke" stroke="#FF4502" d="M 56 72 C 58 64, 64 60, 72 60 C 84 60, 90 68, 90 78"/>
+      </svg>
+      <div class="icon-label">Équipe / Joueurs</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 30 28 A 18 18 0 0 1 50 18 A 18 18 0 0 1 70 28 A 14 14 0 0 1 78 46 A 14 14 0 0 1 72 64 A 16 16 0 0 1 52 80 A 16 16 0 0 1 30 64 A 14 14 0 0 1 22 46 A 14 14 0 0 1 30 28 Z"/>
+        <path class="stroke" stroke="#FF4502" d="M 50 18 L 50 80 M 36 38 L 50 44 L 64 38 M 36 60 L 50 54 L 64 60"/>
+      </svg>
+      <div class="icon-label">Santé mentale</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 14 84 L 86 84 M 14 14 L 14 84"/>
+        <rect x="24" y="58" width="12" height="26" class="fill-cream"/>
+        <rect x="42" y="42" width="12" height="42" class="fill-lime"/>
+        <rect x="60" y="22" width="12" height="62" class="fill-red"/>
+      </svg>
+      <div class="icon-label">Analytics / KPI</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" stroke="#FF4502" stroke-width="6" fill="#FF4502" d="M 56 12 L 24 56 L 46 56 L 38 88 L 76 40 L 52 40 Z"/>
+      </svg>
+      <div class="icon-label">Match instantané</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 50 12 C 32 12, 20 24, 20 42 C 20 64, 50 90, 50 90 C 50 90, 80 64, 80 42 C 80 24, 68 12, 50 12 Z"/>
+        <circle cx="50" cy="40" r="10" class="fill-red"/>
+      </svg>
+      <div class="icon-label">Géolocalisation</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 14 28 A 8 8 0 0 1 22 20 L 78 20 A 8 8 0 0 1 86 28 L 86 60 A 8 8 0 0 1 78 68 L 42 68 L 26 84 L 26 68 L 22 68 A 8 8 0 0 1 14 60 Z"/>
+        <circle cx="34" cy="44" r="4" class="fill-red"/>
+        <circle cx="50" cy="44" r="4" class="fill-red"/>
+        <circle cx="66" cy="44" r="4" class="fill-red"/>
+      </svg>
+      <div class="icon-label">Messagerie</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path class="stroke" d="M 50 14 L 56 22 L 66 18 L 68 30 L 80 32 L 76 44 L 86 50 L 76 56 L 80 68 L 68 70 L 66 82 L 56 78 L 50 86 L 44 78 L 34 82 L 32 70 L 20 68 L 24 56 L 14 50 L 24 44 L 20 32 L 32 30 L 34 18 L 44 22 Z"/>
+        <circle cx="50" cy="50" r="10" class="fill-red"/>
+      </svg>
+      <div class="icon-label">Réglages</div>
+    </div>
+  </div>
+
+  <div class="icon-style-info">
+    <div>
+      <h4>→ Style guidelines</h4>
+      <p>Trait à 6px constant, terminaisons en <em>round-cap</em>, jonctions <em>round-join</em>. Toujours sur grille 100×100. Padding interne minimum de 10px.</p>
+      <div class="icon-spec">stroke: 6px</div>
+    </div>
+    <div>
+      <h4>→ Couleurs autorisées</h4>
+      <p>Trait : crème (#f5f1e8) sur fond noir, ou noir sur fond clair. Accent : red orange (1 max) ou lime en remplissage. Jamais de mauve ou de bleu.</p>
+      <div class="icon-spec">cream + 1 accent</div>
+    </div>
+    <div>
+      <h4>→ Tailles d'usage</h4>
+      <p>App tab bar : 24px. Boutons : 18–22px. Hero : 48–80px. En dessous de 16px, supprimer l'accent rouge — gardez le trait crème uniquement.</p>
+      <div class="icon-spec">16 / 24 / 48 / 80</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ APP MOCKUPS ═══════════ -->
+<section class="section app-section" id="app">
+  <div class="section-num">05 / Application mobile</div>
+  <div class="section-title-wrap">
+    <h2 class="section-title">L'app, en <span class="accent">chair</span></h2><br>
+    <h2 class="section-title">et en pixels.</h2>
+  </div>
+  <p class="section-lead">Quatre écrans-clés de l'application PlayMed. Le mode sombre est natif : dashboard noir avec accents lime, profil mauve, match red orange, splash lime. La marque change de costume selon le contexte.</p>
+
+  <div class="phones-row">
+    <div class="phone phone-1">
+      <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
+      <div class="phone-1-content">
+        <div class="phone-1-logo">Play<span class="ed">Med</span></div>
+        <div>
+          <div class="phone-1-hero">CONNECTE.<br>SOIGNE.<br><span class="red">GAGNE.</span></div>
+          <div class="phone-1-sub">La plateforme du staff médical sportif</div>
+          <div class="phone-1-cta">Je suis un club</div>
+          <div class="phone-1-cta-2">→ Je suis praticien</div>
+        </div>
+      </div>
+      <div class="phone-tag">01 · Splash / Onboarding</div>
+    </div>
+
+    <div class="phone phone-2">
+      <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
+      <div class="phone-2-content">
+        <div class="ph2-header">
+          <div>
+            <div class="ph2-greeting">Bonjour</div>
+            <div class="ph2-name">FC Toulouse</div>
+          </div>
+          <div class="ph2-avatar">FC</div>
+        </div>
+        <div class="ph2-stat">
+          <div class="ph2-stat-label">→ Disponibilité équipe</div>
+          <div class="ph2-stat-value">84%</div>
+          <div class="ph2-stat-sub">21 sur 25 joueurs aptes</div>
+        </div>
+        <div class="ph2-cards">
+          <div class="ph2-mini">
+            <div class="ph2-mini-label">Praticiens</div>
+            <div class="ph2-mini-val"><span class="lime">12</span></div>
+          </div>
+          <div class="ph2-mini accent">
+            <div class="ph2-mini-label">Séances</div>
+            <div class="ph2-mini-val">8</div>
+          </div>
+        </div>
+        <div class="ph2-list-title">→ Suivis actifs</div>
+        <div class="ph2-list-item">
+          <div class="ph2-dot"></div>
+          <div class="ph2-item-info">
+            <div class="ph2-item-name">M. Dubois</div>
+            <div class="ph2-item-meta">Cuisse · J+3</div>
+          </div>
+        </div>
+        <div class="ph2-list-item">
+          <div class="ph2-dot lime"></div>
+          <div class="ph2-item-info">
+            <div class="ph2-item-name">L. Martin</div>
+            <div class="ph2-item-meta">Cheville · OK</div>
+          </div>
+        </div>
+        <div class="ph2-tab-bar">
+          <div class="ph2-tab active">
+            <svg viewBox="0 0 24 24"><path d="M3 9 L12 3 L21 9 L21 20 L3 20 Z M9 20 L9 13 L15 13 L15 20"/></svg>
+          </div>
+          <div class="ph2-tab">
+            <svg viewBox="0 0 24 24"><path d="M3 6 H21 M3 12 H21 M3 18 H21"/></svg>
+          </div>
+          <div class="ph2-tab">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>
+          </div>
+          <div class="ph2-tab">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M4 21 C4 16, 8 14, 12 14 C16 14, 20 16, 20 21"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="phone-tag">02 · Dashboard club · Dark</div>
+    </div>
+
+    <div class="phone phone-3">
+      <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
+      <div class="phone-3-content">
+        <div class="ph3-back">← Praticiens</div>
+        <div class="ph3-hero">
+          <div class="ph3-pic">SD</div>
+          <div class="ph3-role">→ Kinésithérapeute</div>
+          <div class="ph3-name">Sarah<br>Delaroche</div>
+          <div class="ph3-spec">Spé. sport · 8 ans d'XP</div>
+          <div class="ph3-badges">
+            <span class="ph3-badge">Vérifié</span>
+            <span class="ph3-badge">Top 5%</span>
+          </div>
+        </div>
+        <div class="ph3-stats-row">
+          <div class="ph3-stat-mini">
+            <div class="v"><span class="lime">120</span></div>
+            <div class="l">Joueurs</div>
+          </div>
+          <div class="ph3-stat-mini">
+            <div class="v"><span class="red">4.9</span></div>
+            <div class="l">Note</div>
+          </div>
+          <div class="ph3-stat-mini">
+            <div class="v">12<span class="red">km</span></div>
+            <div class="l">Distance</div>
+          </div>
+        </div>
+        <div class="ph3-availability">
+          <div class="ph3-avail-title">→ Cette semaine</div>
+          <div class="ph3-days">
+            <div class="ph3-day on">L</div>
+            <div class="ph3-day on">M</div>
+            <div class="ph3-day off">M</div>
+            <div class="ph3-day on">J</div>
+            <div class="ph3-day on">V</div>
+            <div class="ph3-day off">S</div>
+            <div class="ph3-day on">D</div>
+          </div>
+        </div>
+        <div class="ph3-cta">Réserver</div>
+      </div>
+      <div class="phone-tag">03 · Profil praticien</div>
+    </div>
+
+    <div class="phone phone-4">
+      <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
+      <div class="phone-4-content">
+        <div class="ph4-eyebrow">→ Match instantané · Urgent</div>
+        <div class="ph4-title">3 PRATICIENS <span class="lime">DISPO</span> POUR TON MATCH</div>
+        <div class="ph4-card">
+          <span class="ph4-card-tag">98% match</span>
+          <div class="ph4-card-head">
+            <div class="ph4-card-pic">SD</div>
+            <div>
+              <div class="ph4-card-name">Sarah Delaroche</div>
+              <div class="ph4-card-spec">Kiné sport · 8 ans</div>
+            </div>
+          </div>
+          <div class="ph4-card-meta">
+            <div class="ph4-meta-item">📍 4,2 km</div>
+            <div class="ph4-meta-item match"><strong>14h</strong></div>
+          </div>
+        </div>
+        <div class="ph4-card">
+          <span class="ph4-card-tag">91% match</span>
+          <div class="ph4-card-head">
+            <div class="ph4-card-pic" style="background:var(--mauve);color:var(--black);">PR</div>
+            <div>
+              <div class="ph4-card-name">Paul Renard</div>
+              <div class="ph4-card-spec">Ostéopathe · 5 ans</div>
+            </div>
+          </div>
+          <div class="ph4-card-meta">
+            <div class="ph4-meta-item">📍 2,8 km</div>
+            <div class="ph4-meta-item match"><strong>15h</strong></div>
+          </div>
+        </div>
+        <div class="ph4-card">
+          <span class="ph4-card-tag">87% match</span>
+          <div class="ph4-card-head">
+            <div class="ph4-card-pic">JM</div>
+            <div>
+              <div class="ph4-card-name">Julien Marc</div>
+              <div class="ph4-card-spec">Kiné · 4 ans</div>
+            </div>
+          </div>
+          <div class="ph4-card-meta">
+            <div class="ph4-meta-item">📍 6,1 km</div>
+            <div class="ph4-meta-item match"><strong>16h</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-tag">04 · Match instantané</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ APPLICATIONS ═══════════ -->
+<section class="section apps-section" id="apps">
+  <div class="section-num">06 / Supports & déclinaisons</div>
+  <div class="section-title-wrap">
+    <h2 class="section-title">La marque,</h2><br>
+    <h2 class="section-title">en <span class="accent">situation</span>.</h2>
+  </div>
+  <p class="section-lead">Du pitch deck investisseur au flyer de pré-saison, en passant par les posts Instagram et les cartes de visite. La marque doit tout porter sans perdre son énergie.</p>
+
+  <div class="apps-grid">
+    <div class="app-large">
+      <div class="app-large-eyebrow">— Campaign · Header website</div>
+      <div>
+        <h3 class="app-large-title">CONNECTE.<br>SOIGNE.<br><span class="red">GAGNE.</span></h3>
+        <p class="app-large-foot">La première plateforme dédiée au staff médical des clubs semi-professionnels. Un seul outil. Tous tes praticiens. Toute ta data.</p>
+      </div>
+    </div>
+    <div class="app-side">
+      <div class="app-card app-card-1">
+        <div>
+          <div class="app-eyebrow">— Instagram · Care content</div>
+          <h4>Mental<br>Game</h4>
+        </div>
+        <p>95% des athlètes jugent le suivi psy indispensable. Seulement 37% y ont accès. PlayMed comble le gap.</p>
+      </div>
+      <div class="app-card app-card-2">
+        <div>
+          <div class="app-eyebrow">— Signature email</div>
+          <h4>Athlete <span class="red">by</span><br>design.</h4>
+        </div>
+        <p>Construit par une ex-athlète de haut niveau. Pour les clubs qui veulent gagner.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-row">
+    <div class="biz-card biz-front">
+      <div class="biz-front-content">
+        <div class="biz-logo">Play<span class="ed">Med</span></div>
+      </div>
+      <div class="biz-info">
+        <div class="biz-name">Ton Nom</div>
+        <div>Founder · CEO</div>
+        <div>+33 6 XX XX XX XX</div>
+        <div>founder@playmed.fr</div>
+      </div>
+    </div>
+    <div class="biz-card biz-back">
+      <div class="biz-back-content">
+        Play<span class="red">Med.</span>
+        <small>HEALTH × SPORT</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DO / DON'T ═══════════ -->
+<section class="section rules-section" id="rules">
+  <div class="section-num">07 / Règles d'usage</div>
+  <div class="section-title-wrap">
+    <h2 class="section-title">À <span class="accent">faire</span>.</h2><br>
+    <h2 class="section-title">À ne pas faire.</h2>
+  </div>
+  <p class="section-lead">Une charte n'est utile que si elle est respectée. Voici les règles pour garder la marque cohérente, peu importe qui l'utilise — toi, un freelance, un partenaire.</p>
+
+  <div class="rules-grid">
+    <div class="rule-col do">
+      <div class="rule-header">
+        <div class="rule-icon">✓</div>
+        <h3 class="rule-title">À faire</h3>
+      </div>
+      <ul class="rule-list">
+        <li>Garder le noir comme fond dominant — c'est la scène où tout vibre</li>
+        <li>Toujours pencher la typo Anton de −4 à −8° quand le ton est sportif</li>
+        <li>Conserver le décrochage de couleur sur "Med" dans le logo (jamais en mono-couleur)</li>
+        <li>Réserver le red orange aux moments de pic visuel — verbe d'action, accent, étincelle</li>
+        <li>Utiliser le mauve uniquement pour les contenus liés à la santé mentale et au care</li>
+        <li>Icônes : trait crème 6px sur fond noir + 1 seul accent par picto (red orange ou lime)</li>
+        <li>Respecter une hauteur de logo minimum de 40px à l'écran et 12mm en print</li>
+      </ul>
+    </div>
+    <div class="rule-col dont">
+      <div class="rule-header">
+        <div class="rule-icon">✕</div>
+        <h3 class="rule-title">À ne pas faire</h3>
+      </div>
+      <ul class="rule-list">
+        <li>Ne jamais utiliser de blanc pur (#fff) pour le texte — toujours le crème (#f5f1e8) plus chaud</li>
+        <li>Ne pas utiliser de dégradé sur le logo principal (toujours en aplat de couleur)</li>
+        <li>Ne pas écrire le nom en minuscules — toujours capitales pour le wordmark hero</li>
+        <li>Ne jamais mettre du red orange sur du mauve, ni du lime sur du blanc pur (illisible)</li>
+        <li>Ne pas mélanger Anton avec d'autres polices display — c'est la voix unique du titre</li>
+        <li>Ne pas utiliser plusieurs accents colorés sur la même icône — un seul</li>
+        <li>Ne jamais déformer ou étirer le logo, même légèrement (le skew est déjà dans la typo)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ END ═══════════ -->
+<section class="end">
+  <div class="end-content">
+    <div class="end-text">— Fin du brand book —</div>
+    <h2 class="end-title">Prête à <span class="red">briller</span> ?</h2>
+    <div class="end-meta">PlayMed · Brand Identity v.04 · Spotlight Dark · Avril 2026</div>
+  </div>
+</section>
+
+</body>
+</html>

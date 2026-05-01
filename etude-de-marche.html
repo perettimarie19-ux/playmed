@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayMed — Dossier Booster Startup 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Familjen+Grotesk:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #FF4502;
+  --mauve: #DCBBFF;
+  --lime: #C2FF01;
+  --blue: #0044FF;
+  --black: #000000;
+  --white: #ffffff;
+  --off: #f5f1e8;
+  --card-bg: #0d0d0d;
+  --border: rgba(194,255,1,0.18);
+  --muted: rgba(245,241,232,0.55);
+  --text: #f5f1e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 56px;
+  background: rgba(0,0,0,0.9);
+  border-bottom: 1px solid rgba(194,255,1,0.15);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  transform: skewX(-4deg);
+}
+.nav-logo .accent { color: var(--lime); }
+.nav-links { display: flex; gap: 0.15rem; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.35rem 0.65rem; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--lime); }
+.nav-badge {
+  font-family: 'DM Mono', monospace;
+  background: var(--lime); color: var(--black);
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+}
+
+/* ── HERO / COVER ── */
+.hero {
+  min-height: 100vh;
+  background: var(--black);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 5rem 3rem 3rem;
+}
+.hero::before {
+  content: ''; position: absolute;
+  top: -20%; right: -20%; width: 65vw; height: 65vw;
+  background: var(--red); border-radius: 50%;
+  filter: blur(140px); opacity: 0.5;
+  animation: float 9s ease-in-out infinite;
+  z-index: 0;
+}
+.hero::after {
+  content: ''; position: absolute;
+  bottom: -25%; left: -15%; width: 55vw; height: 55vw;
+  background: var(--blue); border-radius: 50%;
+  filter: blur(160px); opacity: 0.4;
+  animation: float 11s ease-in-out infinite reverse;
+  z-index: 0;
+}
+@keyframes float { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-30px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+.hero-inner {
+  position: relative; z-index: 2;
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--mauve);
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.9s ease both;
+}
+.hero-eyebrow::before { content: '●'; font-size: 0.45rem; animation: blink 1.5s infinite; color: var(--lime); }
+.hero-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase;
+  animation: fadeUp 0.9s 0.1s ease both;
+}
+.hero-title .lime { color: var(--lime); transform: skewX(-6deg); display: inline-block; }
+.hero-title .red { color: var(--red); font-style: italic; }
+.hero-sub {
+  font-size: 1.05rem; color: var(--muted); max-width: 580px; margin: 1.5rem auto 0;
+  animation: fadeUp 0.9s 0.2s ease both;
+}
+.hero-kpis {
+  display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; margin-top: 3.5rem;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+.kpi-val {
+  font-family: 'Anton', sans-serif; font-size: 2.4rem;
+  color: var(--lime); display: block; line-height: 1;
+  transform: skewX(-4deg);
+}
+.kpi-lbl { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.hero-bot { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; }
+.hero-mono { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.scroll-hint { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--mauve); font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.scroll-arrow { width: 18px; height: 18px; border-right: 2px solid var(--lime); border-bottom: 2px solid var(--lime); transform: rotate(45deg); animation: bounce 1.5s infinite; }
+
+/* ── SECTION ── */
+.section { max-width: 960px; margin: 0 auto; padding: 5rem 2rem; position: relative; }
+.divider { width: 100%; height: 1px; background: rgba(194,255,1,0.12); }
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 1rem;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.section-label::before { content: ''; width: 20px; height: 1px; background: var(--lime); display: inline-block; }
+h2.section-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase;
+  margin-bottom: 1rem; color: var(--white);
+}
+h2.section-title .accent { color: var(--red); font-style: italic; }
+h2.section-title .lime { color: var(--lime); }
+.section-lead { color: var(--muted); font-size: 1rem; max-width: 680px; margin-bottom: 2.5rem; line-height: 1.75; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(194,255,1,0.15);
+  padding: 1.6rem 1.8rem;
+  transition: border-color 0.25s, transform 0.25s;
+  position: relative; overflow: hidden;
+}
+.card:hover { border-color: rgba(194,255,1,0.45); transform: translateY(-2px); }
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--lime), var(--red));
+  opacity: 0; transition: opacity 0.25s;
+}
+.card:hover::before { opacity: 1; }
+
+/* ── GRID MINI-CARDS ── */
+.grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.mini-card { background: var(--card-bg); border: 1px solid rgba(194,255,1,0.12); padding: 1.3rem; transition: border-color 0.2s; }
+.mini-card:hover { border-color: var(--lime); }
+.mini-card .mc-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem; }
+.mini-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+/* ── KPI GRID ── */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.kpi-card { background: var(--card-bg); border: 1px solid rgba(194,255,1,0.12); padding: 1.4rem 1.2rem; text-align: center; }
+.kpi-card .num { font-family: 'Anton', sans-serif; font-size: 2.2rem; color: var(--lime); display: block; line-height: 1; transform: skewX(-4deg); }
+.kpi-card .label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; letter-spacing: 0.04em; line-height: 1.5; text-transform: uppercase; }
+
+/* ── CHIP ── */
+.chip {
+  display: inline-flex; align-items: center;
+  background: rgba(194,255,1,0.08); border: 1px solid rgba(194,255,1,0.2);
+  color: var(--lime); font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+}
+.chip.red { background: rgba(255,69,2,0.08); border-color: rgba(255,69,2,0.25); color: var(--red); }
+.chip.mauve { background: rgba(220,187,255,0.08); border-color: rgba(220,187,255,0.25); color: var(--mauve); }
+.chip.blue { background: rgba(0,68,255,0.1); border-color: rgba(0,68,255,0.3); color: #6699ff; }
+
+/* ── ACCORDION ── */
+.accordion { display: flex; flex-direction: column; gap: 0.6rem; }
+.acc-item { background: var(--card-bg); border: 1px solid rgba(194,255,1,0.12); overflow: hidden; transition: border-color 0.2s; }
+.acc-item.open { border-color: rgba(194,255,1,0.35); }
+.acc-trigger {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem; cursor: pointer; background: none; border: none;
+  color: var(--white); font-family: 'Familjen Grotesk', sans-serif;
+  font-size: 0.95rem; font-weight: 500; text-align: left; transition: color 0.2s;
+}
+.acc-trigger:hover { color: var(--lime); }
+.acc-number {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--lime);
+  margin-right: 1rem; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.acc-icon {
+  width: 26px; height: 26px; border: 1px solid rgba(194,255,1,0.25);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--lime); font-size: 1.1rem; line-height: 1;
+  flex-shrink: 0; transition: transform 0.3s, background 0.2s;
+}
+.acc-item.open .acc-icon { transform: rotate(45deg); background: rgba(194,255,1,0.12); }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.4,0,.2,1); }
+.acc-item.open .acc-body { max-height: 1200px; }
+.acc-content { padding: 0 1.5rem 1.4rem; border-top: 1px solid rgba(194,255,1,0.08); }
+.acc-content p { color: var(--muted); font-size: 0.92rem; margin-top: 1rem; line-height: 1.75; }
+
+/* ── LIST ── */
+ul.custom-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-top: 0.8rem; }
+ul.custom-list li { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+ul.custom-list li::before { content: '▸'; color: var(--lime); font-size: 0.78rem; margin-top: 0.25rem; flex-shrink: 0; }
+ul.custom-list li strong { color: var(--white); font-weight: 500; }
+
+/* ── ACRONYM TOOLTIP ── */
+.acro { color: var(--lime); border-bottom: 1px dashed rgba(194,255,1,0.4); cursor: help; position: relative; display: inline-block; }
+.acro-tip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  background: #1a1a1a; border: 1px solid rgba(194,255,1,0.2);
+  color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 400; line-height: 1.5;
+  padding: 0.6rem 0.9rem; white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity 0.15s; z-index: 200;
+}
+.acro:hover .acro-tip { opacity: 1; }
+
+/* ── TABLE ── */
+.table-wrap { overflow-x: auto; margin-top: 1.2rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+thead tr { background: rgba(194,255,1,0.06); }
+thead th { padding: 0.75rem 1rem; text-align: left; color: var(--lime); font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid rgba(194,255,1,0.15); font-weight: 400; }
+tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
+tbody tr:hover { background: rgba(194,255,1,0.03); }
+tbody td { padding: 0.75rem 1rem; color: var(--muted); vertical-align: top; }
+tbody td:first-child { color: var(--white); }
+
+/* ── TABS ── */
+.tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.tab-btn {
+  background: var(--card-bg); border: 1px solid rgba(194,255,1,0.15);
+  color: var(--muted); font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.45rem 1rem; cursor: pointer; transition: all 0.2s;
+}
+.tab-btn.active { background: rgba(194,255,1,0.1); border-color: var(--lime); color: var(--lime); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── PROGRESS ── */
+.prog-item { margin-bottom: 0.85rem; }
+.prog-head { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.prog-head span:last-child { color: var(--lime); }
+.prog-bar { background: rgba(255,255,255,0.06); height: 4px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--lime), var(--red)); transition: width 1.2s cubic-bezier(.4,0,.2,1); width: 0; }
+
+/* ── SCENARIO ── */
+.scenario { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.2rem; }
+.sc-card { background: var(--card-bg); border: 1px solid rgba(194,255,1,0.12); padding: 1.4rem; text-align: center; }
+.sc-card .sc-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.sc-card .sc-main { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--lime); margin: 0.5rem 0 0.25rem; transform: skewX(-4deg); display: block; }
+.sc-card .sc-sub { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.sc-card.rea { border-color: rgba(194,255,1,0.4); }
+.sc-card.opt { background: rgba(194,255,1,0.04); border-color: rgba(194,255,1,0.35); }
+
+/* ── ROADMAP ── */
+.roadmap { display: flex; flex-direction: column; position: relative; }
+.roadmap::before { content: ''; position: absolute; left: 20px; top: 28px; bottom: 28px; width: 1px; background: linear-gradient(to bottom, var(--lime), rgba(194,255,1,0.05)); }
+.rm-item { display: flex; gap: 1.5rem; padding: 1rem 0; }
+.rm-dot {
+  width: 40px; height: 40px; border: 1px solid var(--lime);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--lime);
+  flex-shrink: 0; position: relative; z-index: 1; background: var(--black);
+  letter-spacing: 0.03em;
+}
+.rm-content { flex: 1; background: var(--card-bg); border: 1px solid rgba(194,255,1,0.1); padding: 1rem 1.2rem; transition: border-color 0.2s; }
+.rm-item:hover .rm-content { border-color: rgba(194,255,1,0.35); }
+.rm-badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--lime); letter-spacing: 0.06em; text-transform: uppercase; }
+.rm-content h4 { font-family: 'Familjen Grotesk', sans-serif; font-size: 0.92rem; font-weight: 500; color: var(--white); margin-top: 0.3rem; }
+.rm-content p { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
+
+/* ── SWOT ── */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 1.5rem; border: 1px solid rgba(194,255,1,0.15); }
+.swot-box { padding: 1.5rem; border-right: 1px solid rgba(194,255,1,0.1); border-bottom: 1px solid rgba(194,255,1,0.1); }
+.swot-box:nth-child(2n) { border-right: none; }
+.swot-box:nth-last-child(-n+2) { border-bottom: none; }
+.swot-box h4 { font-family: 'Anton', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+.swot-box.s h4 { color: var(--lime); }
+.swot-box.w h4 { color: var(--red); }
+.swot-box.o h4 { color: var(--mauve); }
+.swot-box.t h4 { color: var(--muted); }
+.swot-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.swot-box li { font-size: 0.83rem; color: var(--muted); display: flex; gap: 0.5rem; line-height: 1.5; }
+.swot-box li::before { content: '–'; flex-shrink: 0; }
+.swot-box.s li::before { color: var(--lime); }
+.swot-box.w li::before { color: var(--red); }
+.swot-box.o li::before { color: var(--mauve); }
+
+/* ── GLOSSARY ── */
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 0.6rem; margin-top: 1.5rem; }
+.gloss-card { background: var(--card-bg); border: 1px solid rgba(194,255,1,0.1); padding: 1rem 1.2rem; transition: border-color 0.2s; }
+.gloss-card:hover { border-color: rgba(194,255,1,0.3); }
+.gloss-card .term { font-family: 'Anton', sans-serif; font-size: 1.1rem; text-transform: uppercase; color: var(--lime); margin-bottom: 0.3rem; }
+.gloss-card .def { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+/* ── PERSONA ── */
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; margin-top: 1.2rem; }
+.persona-card { background: var(--card-bg); border: 1px solid rgba(194,255,1,0.1); padding: 1.2rem; }
+.persona-card .role { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lime); margin-bottom: 0.35rem; }
+.persona-card h4 { color: var(--white); font-size: 0.92rem; font-weight: 500; margin-bottom: 0.5rem; }
+.persona-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+/* ── BIG QUOTE ── */
+.big-quote {
+  border-left: 3px solid var(--lime); padding: 1.5rem 2rem; margin: 2rem 0;
+  background: rgba(194,255,1,0.03);
+}
+.big-quote p { font-size: 1.05rem; color: var(--white); font-style: italic; line-height: 1.8; }
+
+/* ── CTA BOX ── */
+.cta-box { background: var(--lime); padding: 3rem; text-align: center; position: relative; overflow: hidden; }
+.cta-box h2 { font-family: 'Anton', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; color: var(--black); margin-bottom: 1rem; transform: skewX(-3deg); }
+.cta-box p { color: rgba(0,0,0,0.75); font-size: 0.95rem; max-width: 640px; margin: 0 auto 2rem; line-height: 1.75; }
+.btn {
+  display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.78rem;
+  letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+  padding: 0.75rem 1.8rem; border: 1px solid var(--black); color: var(--black);
+  transition: background 0.2s, color 0.2s; background: transparent;
+}
+.btn:hover { background: var(--black); color: var(--lime); }
+.btn.inv { background: var(--black); color: var(--lime); border-color: var(--black); }
+.btn.inv:hover { background: transparent; color: var(--black); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--card-bg); border-top: 1px solid rgba(194,255,1,0.12);
+  padding: 2.5rem 3rem; text-align: center;
+  font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted);
+}
+footer .foot-logo { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--lime); text-transform: uppercase; transform: skewX(-4deg); display: inline-block; margin-bottom: 0.75rem; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1{transition-delay:.05s}.d2{transition-delay:.1s}.d3{transition-delay:.15s}.d4{transition-delay:.2s}
+
+@media(max-width:640px){
+  .swot-grid { grid-template-columns: 1fr; }
+  .scenario { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero-title { font-size: 2.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Play<span class="accent">Med</span></div>
+  <ul class="nav-links">
+    <li><a href="#projet">Vision</a></li>
+    <li><a href="#probleme">Problème</a></li>
+    <li><a href="#marche">Marché</a></li>
+    <li><a href="#bmc">BMC</a></li>
+    <li><a href="#finances">Finances</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#swot">SWOT</a></li>
+    <li><a href="#glossaire">Glossaire</a></li>
+  </ul>
+  <div class="nav-badge">Booster 2026</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Dossier de candidature · Programme Booster Startup</div>
+    <h1 class="hero-title">
+      La plateforme qui<br>
+      <span class="lime">révolutionne</span> le<br>
+      staff médical <span class="red">sportif</span>
+    </h1>
+    <p class="hero-sub">Connecter les clubs sportifs semi-professionnels aux professionnels de santé via la donnée, le <span class="acro">SaaS<span class="acro-tip">Software as a Service — logiciel accessible en ligne par abonnement, sans installation locale</span></span> et l'humain.</p>
+    <div class="hero-kpis">
+      <div><span class="kpi-val">~500</span><div class="kpi-lbl">Clubs cibles<br>Phase 1</div></div>
+      <div><span class="kpi-val">53 Md€</span><div class="kpi-lbl">Marché sport<br>France</div></div>
+      <div><span class="kpi-val">+147%</span><div class="kpi-lbl">SportTech FR<br>2024</div></div>
+      <div><span class="kpi-val">0</span><div class="kpi-lbl">Concurrent<br>direct</div></div>
+    </div>
+  </div>
+  <div class="hero-bot">
+    <div class="hero-mono">PlayMed · Document confidentiel · 2026</div>
+    <div class="scroll-hint">
+      <span>Découvrir</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 01. VISION -->
+<section class="section reveal" id="projet">
+  <div class="section-label">01 · Vision</div>
+  <h2 class="section-title">Le projet en <span class="accent">une phrase</span></h2>
+  <p class="section-lead">Une plateforme <span class="acro">SaaS<span class="acro-tip">Software as a Service — logiciel accessible par abonnement en ligne</span></span> qui permet aux clubs sportifs semi-professionnels de trouver, recruter et collaborer avec des professionnels de santé, tout en centralisant le suivi médical de leurs joueurs.</p>
+
+  <div class="big-quote">
+    <p>"J'ai joué à haut niveau. J'ai vécu les blessures mal suivies, l'absence de soutien psychologique, les carrières brisées faute d'accompagnement. Je construis cette solution parce que je suis la personne la mieux placée pour le faire — et personne ne peut me copier là-dessus."</p>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem;">
+      <span class="chip">Ex-athlète haut niveau</span>
+      <span class="chip">Fondatrice</span>
+      <span class="chip">Master 2 Marketing Digital</span>
+    </div>
+  </div>
+
+  <div class="grid4">
+    <div class="mini-card reveal d1">
+      <div class="mc-label">Légitimité</div>
+      <p>Vécu d'athlète de haut niveau = porte d'entrée immédiate dans les vestiaires</p>
+    </div>
+    <div class="mini-card reveal d2">
+      <div class="mc-label">Double marché</div>
+      <p>Clubs (acheteurs) × Praticiens de santé (offreurs) — effet réseau puissant</p>
+    </div>
+    <div class="mini-card reveal d3">
+      <div class="mc-label">Timing parfait</div>
+      <p>Post-JO Paris 2024 — SportTech française en plein essor (+147% levées)</p>
+    </div>
+    <div class="mini-card reveal d4">
+      <div class="mc-label">Vide marché</div>
+      <p>Aucun acteur ne propose le triptyque matching médical + data + semi-pro</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 02. PROBLÈME -->
+<section class="section reveal" id="probleme">
+  <div class="section-label">02 · Problème</div>
+  <h2 class="section-title">La douleur <span class="accent">vécue</span></h2>
+  <p class="section-lead">Les clubs semi-professionnels ont des exigences de performance proches des clubs pros — avec des budgets qui n'ont rien à voir. Le staff médical est leur maillon faible.</p>
+
+  <div class="kpi-grid" style="margin-bottom:2rem;">
+    <div class="kpi-card reveal d1"><span class="num">84%</span><div class="label">Disponibilité joueurs top euro (16% blessés en permanence)</div></div>
+    <div class="kpi-card reveal d2"><span class="num">10–30%</span><div class="label">Du salaire annuel d'un joueur perdu par blessure mal suivie</div></div>
+    <div class="kpi-card reveal d3"><span class="num">95%</span><div class="label">Des athlètes jugent le suivi psychologique indispensable</div></div>
+    <div class="kpi-card reveal d4"><span class="num">37%</span><div class="label">Seulement 37% y ont réellement accès → écart de 58 points</div></div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-item open">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">01</span>Réseau médical 100% informel</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <p>Accords oraux avec un kiné local, souvent un ami ou un ancien joueur. Aucune traçabilité, aucune garantie de présence le jour du match. Si le kiné est indisponible, le club se retrouve sans solution en quelques heures.</p>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">02</span>Pas de suivi centralisé des blessures</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <p>Les données sont éparpillées entre papier, WhatsApp et mails. Impossible à exploiter pour prendre de meilleures décisions sportives ou prévenir les récidives. Quand le praticien change, la mémoire médicale du joueur disparaît.</p>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">03</span>Zéro suivi psychologique</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <p>Absent dans quasi tous les clubs semi-pros alors que 95% des athlètes le jugent indispensable (CNOSF, post-JO 2024). Les troubles anxieux concernent 24% des jeunes sportifs de haut niveau. C'est le marché différenciant le plus porteur de la solution.</p>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">04</span>Impact financier invisible mais réel</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <p>Chaque blessure mal suivie = salaire maintenu + contre-performance + risque de récidive. Pour un club semi-pro, cela représente 10 à 30% du salaire annuel du joueur. Un abonnement à 300€/mois rapporte un <span class="acro">ROI<span class="acro-tip">Return On Investment — Retour sur investissement : rapport entre le gain obtenu et le coût engagé</span></span> positif dès la première blessure évitée.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 03. MARCHÉ -->
+<section class="section reveal" id="marche">
+  <div class="section-label">03 · Marché</div>
+  <h2 class="section-title">Un segment <span class="lime">vierge</span>, un timing <span class="accent">idéal</span></h2>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(this,'macro')">Macro-marché</button>
+    <button class="tab-btn" onclick="switchTab(this,'offre')">Côté praticiens</button>
+    <button class="tab-btn" onclick="switchTab(this,'demande')">Côté clubs</button>
+    <button class="tab-btn" onclick="switchTab(this,'concurrence')">Concurrents</button>
+  </div>
+
+  <div id="tab-macro" class="tab-panel active">
+    <div class="kpi-grid">
+      <div class="kpi-card"><span class="num">53 Md€</span><div class="label">Marché du sport France (2,6% du <span class="acro">PIB<span class="acro-tip">Produit Intérieur Brut</span></span>)</div></div>
+      <div class="kpi-card"><span class="num">79 M€</span><div class="label">Levées SportTech France 2024 (+147% vs 2023)</div></div>
+      <div class="kpi-card"><span class="num">16,5 M</span><div class="label">Licences sportives annuelles (+7,8% en 1 an)</div></div>
+      <div class="kpi-card"><span class="num">3e</span><div class="label">Place de la France en Europe (levées SportTech)</div></div>
+    </div>
+    <div class="table-wrap" style="margin-top:1.5rem;">
+      <table>
+        <thead><tr><th>Segment</th><th>Croissance</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>SportTech numérique & <span class="acro">IA<span class="acro-tip">Intelligence Artificielle</span></span></td><td>+31%/an</td><td><span class="chip">Fort</span></td></tr>
+          <tr><td>Football féminin</td><td>+18%</td><td><span class="chip">Fort</span></td></tr>
+          <tr><td>Basket licenciés post-JO</td><td>+46%</td><td><span class="chip">Fort</span></td></tr>
+          <tr><td>Budget État sport 2025</td><td>–10%</td><td><span class="chip red">Risque</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="tab-offre" class="tab-panel">
+    <div class="kpi-grid">
+      <div class="kpi-card"><span class="num">109 000</span><div class="label">Kinésithérapeutes en France (Ordre <span class="acro">MK<span class="acro-tip">Masseur-Kinésithérapeute</span></span> 2024)</div></div>
+      <div class="kpi-card"><span class="num">19 746</span><div class="label">Kinés âgés de 25 à 29 ans (cible principale)</div></div>
+      <div class="kpi-card"><span class="num">85%</span><div class="label">Exercent en libéral → disponibles pour les clubs</div></div>
+      <div class="kpi-card"><span class="num">+14%</span><div class="label">Progression de la profession en 5 ans</div></div>
+    </div>
+    <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem;">
+      <div class="prog-item">
+        <div class="prog-head"><span>Kinésithérapeutes du sport</span><span>Priorité 1</span></div>
+        <div class="prog-bar"><div class="prog-fill" data-w="90"></div></div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-head"><span>Médecins du sport</span><span>Priorité 1</span></div>
+        <div class="prog-bar"><div class="prog-fill" data-w="75"></div></div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-head"><span>Psychologues du sport</span><span>Angle différenciant</span></div>
+        <div class="prog-bar"><div class="prog-fill" data-w="60"></div></div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-head"><span>Ostéopathes</span><span>Phase 2</span></div>
+        <div class="prog-bar"><div class="prog-fill" data-w="45"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-demande" class="tab-panel">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Sport</th><th>Division(s) ciblées</th><th>Nb clubs</th><th>Priorité</th></tr></thead>
+        <tbody>
+          <tr><td>Football</td><td>National 1 & 2</td><td>~64</td><td><span class="chip">Priorité 1</span></td></tr>
+          <tr><td>Rugby</td><td>Nationale & Nationale 2</td><td>~38</td><td><span class="chip">Priorité 1</span></td></tr>
+          <tr><td>Football féminin</td><td>D1 Arkema & D2</td><td>~36</td><td><span class="chip mauve">Stratégique</span></td></tr>
+          <tr><td>Handball</td><td>Proligue & Nationale M1</td><td>~28</td><td><span class="chip">Haute</span></td></tr>
+          <tr><td>Basket & Volley</td><td>Pro B, NM1, Ligue A</td><td>~64</td><td><span class="chip red">Phase 2</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="persona-grid" style="margin-top:1.5rem;">
+      <div class="persona-card"><div class="role">Décideur</div><h4>Directeur Général / Président</h4><p>Sensible au <span class="acro">ROI<span class="acro-tip">Return On Investment</span></span> et à l'image du club. Argument clé : chaque blessure mal suivie coûte plus qu'un abonnement annuel.</p></div>
+      <div class="persona-card"><div class="role">Prescripteur</div><h4>Entraîneur / Directeur sportif</h4><p>Ressent le problème au quotidien. Veut connaître l'état de forme de chaque joueur en temps réel. Souvent initiateur de la demande.</p></div>
+      <div class="persona-card"><div class="role">Influenceur</div><h4>Manager général / Admin</h4><p>Sensible à la clarté du cadre juridique et à la simplicité administrative. Apprécie qu'un outil centralise tout.</p></div>
+    </div>
+  </div>
+
+  <div id="tab-concurrence" class="tab-panel">
+    <div class="card" style="margin-bottom:1.2rem;background:rgba(194,255,1,0.04);border-color:rgba(194,255,1,0.3);">
+      <p style="color:var(--lime);font-weight:500;">✓ Aucun concurrent direct. Le vide est confirmé sur le segment matching médical + suivi data + clubs semi-pros.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Acteur</th><th>Positionnement</th><th>Ce qui manque</th></tr></thead>
+        <tbody>
+          <tr><td>Mon Staff Médical</td><td>Mise en relation B2C individuelle</td><td>Pas de gestion club, pas de data</td></tr>
+          <tr><td>StadiumPrime</td><td>RH sportif généraliste</td><td>Pas de suivi médical ni centralisation</td></tr>
+          <tr><td>Doctolib / Keldoc</td><td>Prise de RDV grand public</td><td>Aucune logique sport/club</td></tr>
+          <tr><td>Catapult / Hudl</td><td>Data performance physique</td><td>50 k€+/an — inaccessible semi-pro</td></tr>
+          <tr><td>LinkinSport</td><td>Réseau pro sportif</td><td>Pas de matching médical</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 04. BMC -->
+<section class="section reveal" id="bmc">
+  <div class="section-label">04 · Business Model Canvas</div>
+  <h2 class="section-title">Les 9 piliers <span class="accent">du modèle</span></h2>
+
+  <div class="accordion">
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">KP</span>Partenaires clés</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <ul class="custom-list">
+          <li><strong>Fédérations sportives</strong> (<span class="acro">FFF<span class="acro-tip">Fédération Française de Football</span></span>, <span class="acro">FFR<span class="acro-tip">Fédération Française de Rugby</span></span>, <span class="acro">FFHb<span class="acro-tip">Fédération Française de Handball</span></span>…) — accès aux clubs affiliés & légitimité</li>
+          <li><strong>Ordres professionnels</strong> (Ordre des <span class="acro">MK<span class="acro-tip">Masseurs-Kinésithérapeutes</span></span>) — référencement et validation des praticiens</li>
+          <li><strong><span class="acro">IFMK<span class="acro-tip">Institut de Formation en Masso-Kinésithérapie</span></span> & Universités de santé</strong> — pipeline de jeunes praticiens</li>
+          <li><strong>Hébergeur certifié <span class="acro">HDS<span class="acro-tip">Hébergement de Données de Santé — certification obligatoire pour stocker des données médicales en France</span></span></strong> (OVH Health, Outscale…) — obligation légale</li>
+          <li><strong><span class="acro">BPI<span class="acro-tip">Banque Publique d'Investissement</span></span> France & investisseurs sportifs</strong> — financement amorçage</li>
+          <li><strong>Le Tremplin, Paris&Co Sport</strong> — incubateurs, réseau, visibilité</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">KA</span>Activités clés</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <ul class="custom-list">
+          <li>Développement & maintenance de la plateforme <span class="acro">SaaS<span class="acro-tip">Software as a Service</span></span></li>
+          <li>Algorithme de matching clubs × praticiens (spécialité, géo, disponibilité)</li>
+          <li>Gestion continue conformité <span class="acro">RGPD<span class="acro-tip">Règlement Général sur la Protection des Données</span></span> & certification <span class="acro">HDS<span class="acro-tip">Hébergement de Données de Santé</span></span></li>
+          <li>Acquisition bilatérale simultanée (praticiens d'abord, clubs ensuite)</li>
+          <li>Animation de la communauté & production de contenu</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="acc-item open">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">VP</span>Proposition de valeur ★</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:0.8rem;">
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--lime);margin-bottom:0.6rem;">Pour les clubs</div>
+            <ul class="custom-list">
+              <li>Trouver le bon praticien au bon moment</li>
+              <li>Suivi médical centralisé en temps réel</li>
+              <li><span class="acro">ROI<span class="acro-tip">Return On Investment</span></span> immédiat sur les blessures</li>
+              <li>Accès psychologues du sport (unique)</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mauve);margin-bottom:0.6rem;">Pour les praticiens</div>
+            <ul class="custom-list">
+              <li>Canal structuré vers les clubs</li>
+              <li>Diversification de l'activité libérale</li>
+              <li>Cadre juridique sécurisé</li>
+              <li>Valorisation du CV terrain</li>
+            </ul>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">CR</span>Relation clients</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <ul class="custom-list">
+          <li><strong>Onboarding accompagné à la main</strong> sur 4 semaines (phase pilote)</li>
+          <li><strong>Support réactif 7j/7</strong> — les urgences arrivent le week-end</li>
+          <li><strong>Rapport mensuel de suivi</strong> — montre le ROI chaque mois</li>
+          <li><strong>Programme ambassadeurs</strong> — 1 mois offert par club référé</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">CH</span>Canaux d'acquisition</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <ul class="custom-list">
+          <li><strong>Prospection directe</strong> via annuaires fédérations (5–10% à froid, 20–30% avec référence)</li>
+          <li><strong>LinkedIn + storytelling personnel</strong> — contenu organique puissant et gratuit</li>
+          <li><strong>Partenariats fédérations</strong> (cycle 6–18 mois, à initier dès M3)</li>
+          <li><strong><span class="acro">IFMK<span class="acro-tip">Institut de Formation en Masso-Kinésithérapie</span></span> & universités</strong> — pipeline praticiens</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">CS</span>Segments clients</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <ul class="custom-list">
+          <li><strong>Clubs football semi-pros National 1 & 2</strong> — ~64 clubs, obligation fédérale</li>
+          <li><strong>Clubs rugby Nationale</strong> — ~38 clubs, sport de contact</li>
+          <li><strong>Football féminin D1 Arkema & D2</strong> — ~36 clubs, angle stratégique personnel</li>
+          <li><strong>Kinésithérapeutes du sport 25–35 ans</strong> — cœur de cible praticiens</li>
+          <li><strong>Psychologues du sport</strong> — niche différenciante à fort potentiel</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">C$</span>Structure de coûts An 1</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Poste</th><th>Type</th><th>Estimation</th></tr></thead>
+            <tbody>
+              <tr><td>Développement tech / no-code</td><td>Variable</td><td>15–40 k€</td></tr>
+              <tr><td>Hébergeur certifié <span class="acro">HDS<span class="acro-tip">Hébergement de Données de Santé</span></span></td><td>Fixe</td><td>3–15 k€</td></tr>
+              <tr><td>Conformité juridique</td><td>One-shot</td><td>5–10 k€</td></tr>
+              <tr><td>Acquisition clients</td><td>Variable</td><td>8–20 k€</td></tr>
+              <tr><td>Masse salariale</td><td>Fixe</td><td>0–30 k€</td></tr>
+              <tr><td><strong>Total An 1</strong></td><td></td><td><strong>31–115 k€</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="acc-number">R$</span>Sources de revenus</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body"><div class="acc-content">
+        <ul class="custom-list">
+          <li><strong>Abonnement <span class="acro">SaaS<span class="acro-tip">Software as a Service</span></span> club</strong> — 199–499€/mois (revenu principal récurrent)</li>
+          <li><strong>Commission matching</strong> — 10–15% de la prestation du praticien</li>
+          <li><strong>Abonnement praticien premium</strong> — 19–49€/mois (visibilité, badge vérifié)</li>
+          <li><strong>Partenariats fédérations</strong> — 50–150 k€/contrat</li>
+          <li><strong>Data agrégée anonymisée (phase 3)</strong> — fédérations, assureurs, labos</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 05. FINANCES -->
+<section class="section reveal" id="finances">
+  <div class="section-label">05 · Finances</div>
+  <h2 class="section-title">Projections & <span class="accent">modèle économique</span></h2>
+  <p class="section-lead">Base : abonnement club à 300€/mois (3 600€/an). Hors revenus praticiens et partenariats fédérations.</p>
+
+  <div style="font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;">Scénarios ARR sur 3 ans</div>
+  <div class="scenario">
+    <div class="sc-card">
+      <div class="sc-label">Conservateur</div>
+      <span class="sc-main">540 k€</span>
+      <div class="sc-sub">An 3 · 150 clubs</div>
+      <div style="margin-top:0.75rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.03em;">An 1 : 72k€ (20 clubs)<br>An 2 : 252k€ (70 clubs)</div>
+    </div>
+    <div class="sc-card rea">
+      <div class="sc-label">Réaliste ★</div>
+      <span class="sc-main" style="font-size:2.2rem;">1,08 M€</span>
+      <div class="sc-sub">An 3 · 300 clubs</div>
+      <div style="margin-top:0.75rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.03em;">An 1 : 144k€ (40 clubs)<br>An 2 : 504k€ (140 clubs)</div>
+    </div>
+    <div class="sc-card opt">
+      <div class="sc-label">Optimiste</div>
+      <span class="sc-main">1,8 M€</span>
+      <div class="sc-sub">An 3 · 500 clubs</div>
+      <div style="margin-top:0.75rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.03em;">An 1 : 252k€ (70 clubs)<br>An 2 : 900k€ (250 clubs)</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;" class="reveal">
+    <div class="card">
+      <div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--lime);margin-bottom:0.75rem;">Réglementation critique</div>
+      <ul class="custom-list">
+        <li><span class="acro">RGPD<span class="acro-tip">Règlement Général sur la Protection des Données</span></span> art. 9 — données médicales sensibles</li>
+        <li><span class="acro">HDS<span class="acro-tip">Hébergement de Données de Santé — certification obligatoire</span></span> — hébergeur certifié obligatoire avant lancement</li>
+        <li>Secret médical — niveaux d'accès différenciés</li>
+        <li>Obligation médicale fédérale — opportunité de valeur</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mauve);margin-bottom:0.75rem;">Aides & financements</div>
+      <ul class="custom-list">
+        <li><span class="acro">ACRE<span class="acro-tip">Aide aux Créateurs et Repreneurs d'Entreprise — exonération de charges sociales la 1ère année</span></span> — exonération charges sociales an 1</li>
+        <li><span class="acro">BPI<span class="acro-tip">Banque Publique d'Investissement</span></span> France — prêts innovation & garanties</li>
+        <li>Subventions région — accompagnement création</li>
+        <li>Incubateurs sport (Le Tremplin, <span class="acro">INSEP<span class="acro-tip">Institut National du Sport, de l'Expertise et de la Performance</span></span>)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 06. ROADMAP -->
+<section class="section reveal" id="roadmap">
+  <div class="section-label">06 · Roadmap</div>
+  <h2 class="section-title">12 premiers mois, <span class="lime">étape par étape</span></h2>
+
+  <div class="roadmap">
+    <div class="rm-item reveal">
+      <div class="rm-dot">S1–4</div>
+      <div class="rm-content">
+        <div class="rm-badge">PHASE 1 · Validation terrain</div>
+        <h4>Entretiens & cadrage</h4>
+        <p>20 entretiens clubs & praticiens — valider le consentement à payer avant de construire. Analyse concurrentielle. Définition du <span class="acro">MVP<span class="acro-tip">Minimum Viable Product — version minimale d'un produit qui permet de tester le marché avec le moins d'effort possible</span></span> et du pricing.</p>
+      </div>
+    </div>
+    <div class="rm-item reveal d1">
+      <div class="rm-dot">S5–12</div>
+      <div class="rm-content">
+        <div class="rm-badge">PHASE 2 · Structure & MVP</div>
+        <h4>Création <span class="acro">SAS<span class="acro-tip">Société par Actions Simplifiée — forme juridique recommandée pour les startups françaises</span></span> & plateforme</h4>
+        <p>Structure juridique (SAS). Développement no-code (Bubble/Softr). Choix hébergeur <span class="acro">HDS<span class="acro-tip">Hébergement de Données de Santé</span></span> & mise en conformité <span class="acro">RGPD<span class="acro-tip">Règlement Général sur la Protection des Données</span></span>.</p>
+      </div>
+    </div>
+    <div class="rm-item reveal d2">
+      <div class="rm-dot">M3–5</div>
+      <div class="rm-content">
+        <div class="rm-badge">PHASE 3 · Pilote</div>
+        <h4>5 clubs pilotes & 15 praticiens</h4>
+        <p>Onboarding accompagné à la main — feedback continu. Itérations hebdomadaires sur le produit. Premiers témoignages clients pour la phase commerciale.</p>
+      </div>
+    </div>
+    <div class="rm-item reveal d3">
+      <div class="rm-dot">M5–9</div>
+      <div class="rm-content">
+        <div class="rm-badge">PHASE 4 · Go-to-market</div>
+        <h4>Prospection & acquisition</h4>
+        <p>Prospection 50+ clubs (football, rugby, football féminin). Lancement LinkedIn & storytelling personnel. Initiation partenariats fédérations (cycle long 6–18 mois).</p>
+      </div>
+    </div>
+    <div class="rm-item reveal d4">
+      <div class="rm-dot">M10–12</div>
+      <div class="rm-content">
+        <div class="rm-badge">PHASE 5 · Levée d'amorçage</div>
+        <h4>40 clubs actifs & financement</h4>
+        <p>Finalisation pitch deck investisseurs. Candidatures <span class="acro">BPI<span class="acro-tip">Banque Publique d'Investissement</span></span>, business angels sport, incubateurs. Préparation internationalisation (Belgique, Suisse).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 07. SWOT -->
+<section class="section reveal" id="swot">
+  <div class="section-label">07 · Analyse</div>
+  <h2 class="section-title">SWOT — Vue <span class="accent">stratégique</span> complète</h2>
+  <div class="swot-grid">
+    <div class="swot-box s">
+      <h4>Forces</h4>
+      <ul>
+        <li>Niche sans concurrent direct confirmé</li>
+        <li>Vécu d'athlète — légitimité non copiable</li>
+        <li>Double marché clubs + praticiens (effet réseau)</li>
+        <li>Timing post-JO 2024 idéal</li>
+        <li>Mission à fort impact social & santé</li>
+        <li>Data médicale = actif stratégique long terme</li>
+      </ul>
+    </div>
+    <div class="swot-box w">
+      <h4>Faiblesses</h4>
+      <ul>
+        <li>Contraintes <span class="acro">RGPD<span class="acro-tip">Règlement Général sur la Protection des Données</span></span> / <span class="acro">HDS<span class="acro-tip">Hébergement de Données de Santé</span></span> lourdes</li>
+        <li>Double adoption simultanée nécessaire</li>
+        <li>Budgets clubs serrés à valider</li>
+        <li>Besoin d'expertise tech / <span class="acro">CTO<span class="acro-tip">Chief Technology Officer — directeur technique</span></span></li>
+      </ul>
+    </div>
+    <div class="swot-box o">
+      <h4>Opportunités</h4>
+      <ul>
+        <li>Football féminin — sous-équipé, en forte croissance</li>
+        <li>Partenariats fédérations nationales</li>
+        <li><span class="acro">IA<span class="acro-tip">Intelligence Artificielle</span></span> pour personnaliser le suivi médical</li>
+        <li>Internationalisation (Belgique, Suisse, Maghreb)</li>
+        <li>Psycho sport : priorité de santé publique</li>
+      </ul>
+    </div>
+    <div class="swot-box t">
+      <h4>Menaces</h4>
+      <ul>
+        <li>Entrée acteur généraliste (Doctolib…)</li>
+        <li>Résistance culturelle au digital</li>
+        <li>Budget sport public –10% en 2025</li>
+        <li>Cycles de décision fédérations très longs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 08. GLOSSAIRE -->
+<section class="section reveal" id="glossaire">
+  <div class="section-label">08 · Référence</div>
+  <h2 class="section-title">Glossaire des <span class="lime">acronymes</span></h2>
+  <p class="section-lead">Tous les termes techniques du dossier, définis clairement. Vous les retrouvez aussi directement dans le texte (survolés en vert).</p>
+  <div class="glossary-grid">
+    <div class="gloss-card"><div class="term">SaaS</div><div class="def">Software as a Service — logiciel accessible en ligne par abonnement mensuel, sans installation locale.</div></div>
+    <div class="gloss-card"><div class="term">MVP</div><div class="def">Minimum Viable Product — version minimale d'un produit pour tester le marché avec le minimum de ressources.</div></div>
+    <div class="gloss-card"><div class="term">RGPD</div><div class="def">Règlement Général sur la Protection des Données — réglementation européenne sur la protection des données personnelles (entrée en vigueur 2018).</div></div>
+    <div class="gloss-card"><div class="term">HDS</div><div class="def">Hébergement de Données de Santé — certification obligatoire en France pour stocker des données médicales sur des serveurs.</div></div>
+    <div class="gloss-card"><div class="term">ROI</div><div class="def">Return On Investment — retour sur investissement : rapport entre le gain généré et le coût engagé.</div></div>
+    <div class="gloss-card"><div class="term">ARR</div><div class="def">Annual Recurring Revenue — revenu annuel récurrent : total des revenus d'abonnement sur un an.</div></div>
+    <div class="gloss-card"><div class="term">SAS</div><div class="def">Société par Actions Simplifiée — forme juridique recommandée pour les startups françaises (souplesse et levée de fonds facilitées).</div></div>
+    <div class="gloss-card"><div class="term">BPI</div><div class="def">Banque Publique d'Investissement — organisme de financement public français pour PME et startups innovantes.</div></div>
+    <div class="gloss-card"><div class="term">ACRE</div><div class="def">Aide aux Créateurs et Repreneurs d'Entreprise — exonération partielle de charges sociales pendant la première année d'activité.</div></div>
+    <div class="gloss-card"><div class="term">CTO</div><div class="def">Chief Technology Officer — directeur technique, responsable de la stratégie technologique de l'entreprise.</div></div>
+    <div class="gloss-card"><div class="term">MK</div><div class="def">Masseur-Kinésithérapeute — professionnel de santé spécialisé dans la rééducation et la prévention des blessures.</div></div>
+    <div class="gloss-card"><div class="term">IFMK</div><div class="def">Institut de Formation en Masso-Kinésithérapie — école de kinésithérapie agréée par l'État.</div></div>
+    <div class="gloss-card"><div class="term">FFF / FFR / FFHb</div><div class="def">Fédérations Françaises de Football / Rugby / Handball — organismes régissant ces sports en France.</div></div>
+    <div class="gloss-card"><div class="term">INSEP</div><div class="def">Institut National du Sport, de l'Expertise et de la Performance — centre d'entraînement des athlètes de haut niveau en France.</div></div>
+    <div class="gloss-card"><div class="term">NPS</div><div class="def">Net Promoter Score — indicateur de satisfaction client mesurant la propension à recommander un service (de –100 à +100).</div></div>
+    <div class="gloss-card"><div class="term">IA</div><div class="def">Intelligence Artificielle — technologie permettant à des systèmes informatiques de simuler des capacités cognitives humaines.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="section reveal" id="contact">
+  <div class="cta-box">
+    <h2>Prête à rejoindre<br>le programme</h2>
+    <p>Je cherche un accompagnement structuré pour accélérer la validation terrain, construire mon MVP et préparer une levée d'amorçage. Voici ce que j'apporte : un marché confirmé, un vécu unique, et la détermination de quelqu'un qui construit la solution qu'elle aurait eu besoin d'avoir.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:" class="btn">→ Me contacter</a>
+      <a href="#projet" class="btn inv">↑ Retour en haut</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">PlayMed</div>
+  <p>Dossier Booster Startup 2026 · Document confidentiel</p>
+  <p style="margin-top:0.4rem;color:rgba(245,241,232,0.3);">Survolez les termes <span style="color:var(--lime)">en vert</span> pour voir leur définition</p>
+</footer>
+
+<script>
+function toggleAcc(btn) {
+  const item = btn.closest('.acc-item');
+  const isOpen = item.classList.contains('open');
+  item.closest('.accordion').querySelectorAll('.acc-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function switchTab(btn, id) {
+  btn.closest('.tabs').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  const panel = document.getElementById('tab-' + id);
+  panel.querySelectorAll('.prog-fill').forEach(bar => {
+    setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 50);
+  });
+}
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const progObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.prog-fill').forEach(bar => {
+        bar.style.width = bar.dataset.w + '%';
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.tab-panel').forEach(el => progObserver.observe(el));
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--lime)' : '';
+  });
+});
+</script>
+</body>
+</html>
